@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block contant %}
+<div style="background-color: rgb(235, 235, 235); padding: 5px; padding-left: 20px; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50),0 2px 10px 0 rgba(0,0,0,0.50)">
+  
+  <form action="" method="POST">
+      
+    <div class="topnav">
+      <h1 style="margin-bottom: 0px;">Dashboard <small>Welcome {{session.admin_row['name']}}</small>
+        
+      </h1>
+      <div class="search-container">
+        
+          <input type="text" placeholder="Search by name/number" name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        
+      </div>
+    </div>
+      
+    <button type="submit" class="btn btn-default pull-right" style="background-color: #4CAF50; color: white; margin-bottom: 10px; margin-top: 10px; margin-right: 15px;">Apply</button>
+    <a href="/download_users"><button type="button" class="btn btn-default pull-left" style="background-color: #4CAF50; color: white; margin-bottom: 10px; margin-top: 10px; margin-right: 15px;">Excel</button></a>
+    <span style="font-size: 26px; padding: 4px; float:left;">Users: <span style="color: gray;">{{counter}}</span></span> 
+    
+    
+    <table class="table table-striped">
+        <tr>
+          <th style="padding-left: 17px;">RP</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Access</th>
+
+          {% if session.admin_row['can_d'] == 1 %}
+          <th>Delete</th>
+          {% else %}
+          <th></th>
+          {% endif %}
+          <th></th>
+          
+        </tr>
+        {% for user in users if user.admin != 1%}
+        <tr>
+            <td><a href="/reset_password/{{ user.id }}/"><img src="{{  url_for('static', filename='forgot-password-icon-22.jpg') }}" alt="reset password" width="30px" height="30px" style="margin-left: 0px;"></td></a>
+            <td><a href="/test_result/{{ user.id }}/" style="color: #333; text-decoration: none;">{{user.id}}</a></td>
+            <td><a href="/test_result/{{ user.id }}/" style="color: #333; text-decoration: none;">{{user.name}}</a></td>
+            <td><a href="/test_result/{{ user.id }}/" style="color: #333; text-decoration: none;">{{user.phone}}</a></td>
+            <td><a href="/test_result/{{ user.id }}/" style="color: #333; text-decoration: none;">{{user.email}}</a></td>
+            
+            {% if user.access == 1 %}
+              <!-- onclick = "f()" --> <td><label class="switch"><input  class="access" type="checkbox" name="access" value="{{ user.id }}" checked><span  class="slider round"></span></label></td>
+            {% else %}
+              <!-- onclick = "f()" --> <td><label class="switch"><input  class="access" type="checkbox" name="access" value="{{ user.id }}"><span  class="slider round"></span></label></td>
+            {% endif %}
+
+            {% if session.admin_row['can_d'] == 1 %}
+            <td><a href="/delet/{{ user.id }}/" class="btn btn-danger ">Delete</a></td>
+            {% else %}
+            <td></td>
+            {% endif %}
+
+          {% if user.pre_a1 != None or user.a1 != None or user.a2 != None or user.b1 != None or user.b2 != None %}
+          <td><span style="color: green; font-size: 30px;">•</span></td>
+          {%else%}
+          <td></td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+        
+    </table>
+   </form>
+</div>
+
+
+
+{% endblock contant %}
+
+<!-- <td><input class="btn btn-success" value="{{ user.id }}" name="accessB" type="submit">Give Access</button> <a href="#" class="btn btn-danger" style="margin-left: 5px">Delet</a></td> -->
+

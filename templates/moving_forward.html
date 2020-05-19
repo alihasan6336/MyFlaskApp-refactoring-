@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Go to the next stage</title>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.lynda.com/static/css/3p.min-1dfaabdd.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.lynda.com/static/signin/css/signin.min-74b33971.css">
+    </head>
+    <body style="background-color: rgb(172, 5, 94);">
+            <div class="row" style="margin: 0px;">
+                <div class="panel col-xs-12" style=" box-shadow: 0 2px 4px 0 rgba(0,0,0,0.80), 0 2px 10px 0 rgba(0,0,0,0.80)">
+                    <form action="" method="POST" style="text-align: center;">
+                        <div style="font-size: 35px; font-family: sans-serif; margin-bottom: 10px; margin-top: 0px;" >{% if start %} {{start}}: {% else %} Continue: {% endif %}</div>
+                        
+                        {% if grades %}
+                        <p style="font-size: 20px;">
+                            Your results in {{testName}}: <b>{{grades}}/24</b>
+                        </p> 
+                        {% endif %}
+                        
+                        <button class="btn btn-default" style="box-shadow: 0 2px 4px 0 rgba(0,0,0,0.80);"><span>{{text}}</span></button>
+                    </form>
+                </div>
+            </div>
+    </body>
+</html>

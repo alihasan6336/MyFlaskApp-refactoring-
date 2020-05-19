@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>Test result</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <style>
+            .c:hover{
+                opacity: 0.7;
+            }
+        </style>
+
+        <style>
+            h3{
+                margin: 0;
+                text-align: center;
+                color: #ddd;
+                background-color: rgb(119, 31, 78);
+                margin-bottom: 20px;
+            }
+
+            table{
+                background-color: rgb(235, 235, 235);
+                box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50),0 2px 10px 0 rgba(0,0,0,0.50);
+                margin-bottom: 3000px;
+            }
+        </style>
+    </head>
+
+    <body style="background-color: rgb(158,31,99)">
+        <div class="container" style="padding: 5px; padding-left: 20px;">
+            {% for test in range(tests| length) %}
+                <table class="table table-striped" style=" margin-bottom: 35px;">
+                    <tr>
+                        <th></th>
+                        <th>Pre_A1</th>
+                        <th>A1</th>
+                        <th>A2</th>
+                        <th>B1</th>
+                        <th>B2</th>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">Listening</th>
+                        <td>{{tests[test].lpre_a1}}/4</td>
+                        <td>{{tests[test].la1}}/4</td>
+                        <td>{{tests[test].la2}}/4</td>
+                        <td>{{tests[test].lb1}}/4</td>
+                        <td>{{tests[test].lb2}}/4</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">Reading</th>
+                        <td>{{tests[test].rpre_a1}}/4</td>
+                        <td>{{tests[test].ra1}}/4</td>
+                        <td>{{tests[test].ra2}}/4</td>
+                        <td>{{tests[test].rb1}}/4</td>
+                        <td>{{tests[test].rb2}}/4</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Vocabulary</th>
+                        <td>{{tests[test].gpre_a1}}/4 <b>(Grammar)</b></td>
+                        <td>{{tests[test].va1}}/4</td>
+                        <td>{{tests[test].va2}}/4</td>
+                        <td>{{tests[test].phb1}}/4 <b>(phonetics)</b></td>
+                        <td>{{tests[test].vb2}}/4</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Functional language</th>
+                        <td>{{tests[test].fpre_a1}}/4</td>
+                        <td>{{tests[test].fa1}}/4</td>
+                        <td>{{tests[test].fa2}}/4</td>
+                        <td>{{tests[test].fb1}}/4</td>
+                        <td>{{tests[test].fb2}}/4</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Grammar</th>
+                        <td>{{tests[test].g2pre_a1}}/8</td>
+                        <td>{{tests[test].ga1}}/8</td>
+                        <td>{{tests[test].ga2}}/8</td>
+                        <td>{{tests[test].gb1}}/8</td>
+                        <td>{{tests[test].gb2}}/8</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Total</th>
+                        <td>{{tests[test].pre_a1}}/24</td>
+                        <td>{{tests[test].a1}}/24</td>
+                        <td>{{tests[test].a2}}/24</td>
+                        <td>{{tests[test].b1}}/24</td>
+                        <td>{{tests[test].b2}}/24</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Date</th>
+                        <td><b>{{tests[test].date}}</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            {% endfor %}
+        </div>
+
+        {% if not session['admin_logged_in'] %}
+            <h3>
+                <b>Contact us</b>
+                <a href="https://www.facebook.com/passiondottraining" target="_blank"><img src="{{ url_for('static', filename='facebook_icon.png') }}" alt="facebook_icon" class="c"  width="25px" height="25px"></a>
+                <a href="http://passionteam.org/" target="_blank"><img src="{{ url_for('static', filename='web_icon.png') }}" alt="website_icon" class="c" width="25px" height="25px"></a>
+            </h3>
+        {% endif %}
+    </body>
+</html>

@@ -1,0 +1,32 @@
+{% extends 'layouts/login_layout.html' %}
+
+{% block title %} Sign In • passion.com {% endblock %}
+
+{% block header %} Admin login: {% endblock %}
+
+{%block main_div_style%} style="padding-bottom: 15px;" {% endblock %}
+
+{% block labels %}
+<label>Phone</label>
+<input type="number" name="phone" class="form-control" >
+<label>Password</label>
+<input type="password" name="password" class="form-control" id="passwordlabel">
+{% endblock %}
+
+{% block submit_button %} Continue {% endblock %}
+
+{% block register_or_login %}
+<a href="/admin_register" style="font-size: 16px; font-family: sans-serif; margin-left: 307px; color: rgb(158,31,99); text-decoration: none;">
+    <div style="float: right;"><b class="c">Register</b></div>
+</a>
+{% endblock %}
+
+{% block contact_us %}
+<h3 style="color: rgb(158,31,99); margin: 0;">
+    <b>Contact us</b>
+    <a href="https://www.facebook.com/passiondottraining" target="_blank"><img src="static/facebook_icon.png" alt="facebook" class="c" width="25px" height="25px"></a>
+    <a href="http://passionteam.org/" target="_blank"><img src="static/web_icon.png" alt="website" class="c" width="25px" height="25px"></a>
+</h3>
+{% endblock %}
+
+

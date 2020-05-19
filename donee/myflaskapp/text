@@ -1,0 +1,589 @@
+# from flask import Flask, render_template, url_for, flash, redirect, session, request, logging
+# from flask_mysqldb import MySQL
+# from wtforms import Form, StringField, TextAreaField, PasswordField, validators
+# from passlib.hash import sha256_crypt
+# from functools import wraps
+
+# #app = Flask(__name__, static_url_path='/static')
+# app = Flask(__name__, static_url_path="", static_folder="templates/static")
+
+# app.config["MYSQL_HOST"] = "localhost"
+# app.config["MYSQL_USER"] = "root"
+# app.config["MYSQL_PASSWORD"] = "M01019056637m"
+# app.config["MYSQL_DB"] = "passion"
+# app.config["MYSQL_CURSORCLASS"] = "DictCursor"
+
+
+# mysql = MySQL(app)
+
+# @app.route('/register', methods=['GET', 'POST'])
+# def register():
+#     if request.method == 'POST':
+#         name = request.form['name']
+#         phone = request.form['phone']
+#         email = request.form['email']
+#         password = request.form['password']
+#         confirm = request.form['confirm']
+        
+#         if password == confirm:
+#             if len(name) >= 1:
+#                 if len(phone) == 11:
+#                     if len(str(password)) >= 1 :
+
+#                         password = sha256_crypt.encrypt(str(password))
+
+#                         # Create cursor
+#                         cur = mysql.connection.cursor()
+
+#                         # Execute query
+#                         cur.execute("INSERT INTO users(name, phone, email, password) VALUES(%s, %s, %s, %s)", (name, phone, email, password))
+
+#                         # Commit to DB
+#                         mysql.connection.commit()
+
+#                         # Close connection
+#                         cur.close()
+#                     else: return render_template("register.html", msg="Password is invalid")
+#                 else: return render_template("register.html", msg="Phone number is invalid")
+#             else: return render_template("register.html", msg="Name must have one character at least")
+
+#         else:
+#             return render_template("register.html", msg="Password do not confirm")
+
+#         return redirect(url_for("log"))
+#     return render_template("register.html")
+
+# error=''
+# def is_logged_in(f):
+#     global error
+#     @wraps(f)
+#     def wrap(*args, **kwargs):
+#         if 'logged_in' in session and 'username' in session:
+#             return f(*args, **kwargs)
+#         else:
+#             error="Unauthorized, Please login"
+#             return redirect(url_for('log'))
+#     return wrap
+
+# def is_logged_inu(f):
+#     global error
+#     @wraps(f)
+#     def wrap(*args, **kwargs):
+#         if 'logged_in' in session and 'name' in session:
+#             return f(*args, **kwargs)
+#         else:
+#             error="Unauthorized, Please login"
+#             return redirect(url_for('log'))
+#     return wrap
+
+
+# @app.route('/log', methods=['GET', 'POST'])
+# def log():
+#     global error
+#     if request.method == 'POST':
+#         name = request.form['name']
+#         password = request.form['password']
+#         error = "Invalid login"
+#         access = 1
+
+#         cur = mysql.connection.cursor()
+
+#         admin = cur.execute("SELECT * FROM users WHERE name = %s AND admin = %b", [name, 1])
+
+#         if admin == 0:
+#             user = cur.execute("SELECT * FROM users WHERE name = %s AND access = %b", [name, 1])
+            
+#             if user == 0:
+#                 user = cur.execute("SELECT * FROM users WHERE name = %s", [name])
+#                 access = 0
+
+#                 if user == 0:
+#                     return render_template("log.html", error=error)
+
+#         data = cur.fetchone()
+#         password_crypty = data['password']
+
+#         result1 = sha256_crypt.verify(password, password_crypty)
+
+        
+        
+#         if result1 and admin > 0:
+#             session['logged_in'] = True
+#             session['username'] = name
+#             return redirect(url_for('dashboard'))
+
+#         if admin > 0:
+#             error = "Invalid Admin Password"
+#             return render_template("log.html", error=error)
+
+#         if result1 and user > 0 and access == 1:
+#             session['logged_in'] = True
+#             session['name'] = name
+#             return redirect(url_for("test_pre_A1"))
+
+#         if result1 and user:
+#             error = "You do not have access yet"
+#             return render_template("log.html", error=error)
+        
+#         return render_template("log.html", error=error)
+#         cur.close()
+
+#     return render_template('log.html', error=error)
+    
+
+
+
+
+
+# # Logout
+# @app.route('/logout')
+# def logout():
+#     session.clear()
+#     return redirect(url_for('log'))
+
+
+# @app.route('/')
+# @app.route('/dashboard', methods=['GET', 'POST'])
+# @is_logged_in
+# def dashboard():
+#     # if request.method == 'POST':
+#     #     val = request.form.get("access")
+#     #     cur = mysql.connection.cursor()
+#     #     cur.execute("INSERT INTO users(access) VALUES(True) where id = %s", (str(val)))
+        
+        
+#     # Create cursor
+#     cur = mysql.connection.cursor()
+    
+#     result = cur.execute("SELECT * FROM users")
+
+#     users = cur.fetchall()
+
+#     if result > 0:
+#         return render_template('dashboard.html', users=users)
+#     else:
+#         msg = 'No users yet.'
+#         return render_template('dashboard.html', msg=msg)
+#     # Close connection
+#     cur.close()
+
+
+# class ArticleForm(Form):
+#     title = StringField('Title', [validators.Length(min=1, max=200)])
+#     body = TextAreaField('Body', [validators.Length(min=30)])
+
+# # Add Article
+# @app.route('/add_article', methods=['GET', 'POST'])
+
+# def add_article():
+#     form = ArticleForm(request.form)
+#     if request.method == 'POST' and form.validate():
+#         title = form.title.data
+#         body = form.body.data
+
+#         # Create Cursor
+#         cur = mysql.connection.cursor()
+
+#         # Execute
+#         cur.execute("INSERT INTO articles(title, body, author) VALUES(%s, %s, %s)",(title, body, session['username']))
+
+#         # Commit to DB
+#         mysql.connection.commit()
+
+#         #Close connection
+#         cur.close()
+
+#         flash('Article Created', 'success')
+
+#         return redirect(url_for('dashboard'))
+
+#     return render_template('add_article.html', form=form)
+
+# level = ''
+# q2 = ''
+# q2a1 = ''
+# @app.route("/set_test", methods=['GET', 'POST'])
+# def set_test():
+#     global level, q2, q2a1
+#     msg = ''
+#     if request.method == 'POST':
+#         level = request.form['test_level']
+#         q2 = request.form["q2"]
+#         # q2a1 = request.form[]
+#         msg = "You have submited the exam succesfully"
+
+#         return render_template("set_test.html", msg=msg)
+
+
+
+#     return render_template("set_test.html")
+
+
+
+# @app.route("/test_pre_A1", methods=['GET', 'POST'])
+# @is_logged_inu
+# def test_pre_A1():
+#     marks = 0
+
+#     if request.method == 'POST':
+#         p1Ans = ['A', 'C', 'E', 'G']
+#         p2Ans = ['B', 'C', 'A', 'B']
+#         p3Ans = ['A', 'A', 'C', 'A']
+#         p4Ans = ['B', 'A', 'B', 'C']
+#         p5Ans = ['B', 'A', 'A', 'C', 'B', 'C', 'A', 'C']
+
+#         val = request.form.getlist('listening')
+#         for i in range(len(val)):
+#             if val[i] in p1Ans:
+#                 marks += 1
+
+        
+
+#         for i in range(4):
+#             name = "reading" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p2Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "grammar" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p3Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "functional_language" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p4Ans[i]:
+#                 marks += 1
+
+#         for i in range(8):
+#             name = "2grammar" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p5Ans[i]:
+#                 marks += 1
+        
+#         if marks >= 19:
+#             return redirect(url_for("test_A1"))
+       
+#         return redirect(url_for("fall"))
+                
+        
+        
+#     return render_template("test_pre_A1.html")
+
+
+
+# @app.route("/test_A1", methods=['GET', 'POST'])
+# @is_logged_inu
+# def test_A1():
+#     marks = 0
+
+#     if request.method == 'POST':
+#         p1Ans = ['A', 'D', 'B', 'B']
+#         p2Ans = ['D', 'D', 'D', 'C']
+#         p3Ans = ['D', 'B', 'C', 'C']
+#         p4Ans = ['A', 'C', 'C', 'A']
+#         p5Ans = ['B', 'D', 'A', 'C', 'D', 'B', 'A', 'C']
+
+#         for i in range(4):
+#             name = "listening" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p1Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "reading" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p2Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "vocabulary" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p3Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "functional_language" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p4Ans[i]:
+#                 marks += 1
+
+#         for i in range(8):
+#             name = "grammar" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p5Ans[i]:
+#                 marks += 1
+        
+#         if marks >= 19:
+#             return redirect(url_for("test_A2"))
+       
+#         return redirect(url_for("fall"))
+
+#     return render_template("test_A1.html")
+
+
+
+# @app.route("/test_A2", methods=['GET', 'POST'])
+# @is_logged_inu
+# def test_A2():
+#     marks = 0
+
+#     if request.method == 'POST':
+#         p1Ans = ['B', 'D', 'G', 'J']
+#         p2Ans = ['D', 'C', 'B', 'D']
+#         p3Ans = ['A', 'C', 'A', 'C']
+#         p4Ans = ['A', 'D', 'B', 'C']
+#         p5Ans = ['A', 'D', 'B', 'C', 'A', 'A', 'A', 'A']
+
+#         val = request.form.getlist('listening')
+#         for i in range(len(val)):
+#             if val[i] in p1Ans:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "reading" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p2Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "vocabulary" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p3Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "functional_language" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p4Ans[i]:
+#                 marks += 1
+
+#         for i in range(8):
+#             name = "grammar" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p5Ans[i]:
+#                 marks += 1
+        
+#         if marks >= 19:
+#             return redirect(url_for("test_B1"))
+       
+#         return redirect(url_for("fall"))
+
+#     return render_template("test_A2.html")
+
+
+
+# @app.route("/test_B1", methods=['GET', 'POST'])
+# @is_logged_inu
+# def test_B1():
+#     marks = 0
+
+#     if request.method == 'POST':
+#         p1Ans = ['A', 'C', 'D', 'G']
+#         p2Ans = ['A', 'B', 'C', 'B']
+#         p3Ans = ['C', 'B', 'A', 'B']
+#         p4Ans = ['C', 'C', 'B', 'A']
+#         p5Ans = ['A', 'B', 'B', 'B', 'B', 'B', 'A', 'A']
+
+#         val = request.form.getlist('listening')
+#         for i in range(len(val)):
+#             if val[i] in p1Ans:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "reading" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p2Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "vocabulary" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p3Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "functional_language" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p4Ans[i]:
+#                 marks += 1
+
+#         for i in range(8):
+#             name = "grammar" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p5Ans[i]:
+#                 marks += 1
+        
+#         if marks >= 19:
+#             return redirect(url_for("test_B2"))
+       
+#         return redirect(url_for("fall"))
+
+
+#     return render_template("test_B1.html")
+
+
+
+# @app.route("/test_B2", methods=['GET', 'POST'])
+# @is_logged_inu
+# def test_B2():
+#     marks = 0 
+
+#     if request.method == 'POST':
+#         p1Ans = ['A', 'C', 'D', 'G']
+#         p2Ans = ['A', 'C', 'E', 'F']
+#         p3Ans = ['A', 'B', 'C', 'A']
+#         p4Ans = ['B', 'A', 'A', 'A']
+#         p5Ans = ['A', 'A', 'B', 'A', 'A', 'A', 'B', 'A']
+
+#         val = request.form.getlist('listening')
+#         for i in range(len(val)):
+#             if val[i] in p1Ans:
+#                 marks += 1
+
+#         val = request.form.getlist('reading')
+#         for i in range(len(val)):
+#             if val[i] in p2Ans:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "vocabulary" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p3Ans[i]:
+#                 marks += 1
+
+#         for i in range(4):
+#             name = "functional_language" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p4Ans[i]:
+#                 marks += 1
+
+#         for i in range(8):
+#             name = "grammar" + str(i+1)
+#             val = request.form.get(name)
+#             if val == p5Ans[i]:
+#                 marks += 1
+        
+#         if marks >= 19:
+#             return redirect(url_for("success"))
+       
+#         return redirect(url_for("fall"))
+
+#     return render_template("test_B2.html")
+
+# @app.route("/fall")
+# @is_logged_inu
+# def fall():
+#     return render_template("fall.html")
+
+# @app.route("/success")
+# @is_logged_inu
+# def success():
+#     return render_template("success.html")
+
+
+# if __name__ == '__main__':
+#     app.secret_key='secret123'
+#     app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# @app.route("/search_result", methods=['GET', 'POST'])
+# @is_logged_in
+# def search_result():
+#     global search
+#     cur = mysql.connection.cursor()
+    
+#     result = cur.execute("SELECT * FROM users WHERE phone = %s", [search])
+
+#     users = cur.fetchall()
+
+#     return redirect("dashboard.html", users=users)
+
+
+
+
+if __name__ == '__main__':
+    app.secret_key='secret123'
+    app.run(debug=True)
+
+
+
+
+
+# global search
+#     if request.method == 'POST':
+#         search = str(request.form['search'])
+#         if search != '':
+#             cur = mysql.connection.cursor()
+    
+#             result = cur.execute("SELECT * FROM users WHERE phone = %s", [search])
+#             if result < 1:
+#                 result = cur.execute("SELECT * FROM users WHERE name = %s", [search])
+
+#             users = cur.fetchall()
+
+#             return render_template("dashboard.html", users=users)
+
+
+#         val = request.form.getlist('access')
+
+#         cur = mysql.connection.cursor()
+
+#         checkedNum = cur.execute("SELECT * FROM users WHERE access = 1")
+#         checked = cur.fetchall()
+        
+#         cur.execute("UPDATE users SET access = 0")
+#         mysql.connection.commit()
+
+#         for user in checked:
+#             for i in val:
+#                 if str(i) != str(user['id']):
+#                     cur.execute("UPDATE users SET access = 1 WHERE id = %s", [user['id']])
+#                     mysql.connection.commit()
+        
+#         for i in val:
+#             cur.execute("UPDATE users SET access = 1 WHERE id = %s", [i])
+#             mysql.connection.commit()
+
+#     cur = mysql.connection.cursor()
+    
+#     result = cur.execute("SELECT * FROM users")
+
+#     users = cur.fetchall()
+
+#     if result > 0:
+#         return render_template('dashboard.html', users=users)
+#     else:
+#         msg = 'No users yet.'
+#         return render_template('dashboard.html', msg=msg)
+#     # Close connection
+#     cur.close()
+
+
+
+
+
+# مبسمحلهوش أنو يرجع

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+	<title>Register • passion.com</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.lynda.com/static/css/3p.min-1dfaabdd.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.lynda.com/static/signin/css/signin.min-74b33971.css">
+    
+    <script>
+            function myFunction() {
+                var x = document.querySelector("#passwordlabel");
+                var z = document.querySelector("#confirmlabel");
+                if (x.type === "password") {
+                    x.type = "text";
+                    z.type = "text";
+                } else {
+                    x.type = "password";
+                    z.type = "password";
+                }
+            }
+    </script>
+
+    <style>
+        .c:hover{
+            opacity: 0.7;
+        }
+    </style>
+
+</head>
+
+<body style="padding: 6px; background-color: rgb(172, 5, 94);  padding-top: 7px; background-image: url({{  url_for('static', filename='/back_ground1.png') }});">
+
+    <div>
+        <img src="passion-pngc-01.png" alt="" width="200px" height="65px" style="position:fixed;">
+    </div>
+        
+            <div class="panel col-xs-12" style="padding-bottom: 5px;">
+            <span style="width: 500px">
+                <form action="" method="POST">
+                    <div style="font-size: 35px; font-family: sans-serif; margin-bottom: 10px" >Register:</div>
+                    {% if msg %}
+                    <div class="alert alert-danger"><span style="font-size: 15px;">{{ msg }}</span></div>
+                    {% endif %}
+                    <label style="font-size: 18px">Name<span style="color: red;">*</span></label>
+                    <input type="text" name="name" class="form-control">
+                    <label style="font-size: 18px">Phone<span style="color: red;">*</span></label>
+                    <input type="number" name="phone" class="form-control">
+                    <label style="font-size: 18px">Email</label>
+                    <input type="text" name="email" class="form-control">
+                    <label style="font-size: 18px">Password<span style="color: red;">*</span></label>
+                    <input type="password" name="password" class="form-control" id="passwordlabel">
+                    <label style="font-size: 18px">Confirm Password<span style="color: red;">*</span></label>
+                    <input type="password" name="confirm" class="form-control" id="confirmlabel">
+                    <input type="checkbox" onclick="myFunction()"><span style="font-size: 16px; font-family: sans-serif;">Show Password</span> 
+                    <button type="submit"  class="btn btn-block btn-lg btn-primary " style="margin-top: 5px; background-color: rgb(158,31,99); border-color: rgb(158,31,99); margin-bottom: 10px">Submit</button>
+                    <a href="/login" style="font-size: 16px; font-family: sans-serif; margin-left: 307px; color: rgb(158,31,99); text-decoration: none;" class="c"><b>Login</b></a>
+                </form>
+            </span>
+            
+        </div>
+</body>
+</html>
+

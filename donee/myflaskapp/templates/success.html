@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title>Test result</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+
+    <body style="background-color: rgb(158,31,99)">
+            <div class="container" style="background-color: rgb(235, 235, 235); padding: 5px; padding-left: 20px; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50),0 2px 10px 0 rgba(0,0,0,0.50)">
+  
+                <table class="table table-striped">
+                    <tr>
+                        <th></th>
+                        <th>Pre_A1</th>
+                        <th>A1</th>
+                        <th>A2</th>
+                        <th>B1</th>
+                        <th>B2</th>
+                        <!-- <th>Precentage</th> -->
+                        
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">Listening</th>
+                        <td>{{user.lpre_a1}}</td>
+                        <td>{{user.la1}}</td>
+                        <td>{{user.la2}}</td>
+                        <td>{{user.lb1}}</td>
+                        <td>{{user.lb2}}</td>
+                        <!-- <td>{{(((user.lpre_a1[0]|int + user.la1|int + 0|int + 0|int + 0|int) / 20) * 100)|string }}%</td> -->
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">Reading</th>
+                        <td>{{user.rpre_a1}}</td>
+                        <td>{{user.ra1}}</td>
+                        <td>{{user.ra2}}</td>
+                        <td>{{user.rb1}}</td>
+                        <td>{{user.rb2}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Vocabulary</th>
+                        <td>{{user.gpre_a1}} <b>(Grammar)</b></td>
+                        <td>{{user.va1}}</td>
+                        <td>{{user.va2}}</td>
+                        <td>{{user.phb1}} <b>(phonetics)</b></td>
+                        <td>{{user.vb2}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Functional language</th>
+                        <td>{{user.fpre_a1}}</td>
+                        <td>{{user.fa1}}</td>
+                        <td>{{user.fa2}}</td>
+                        <td>{{user.fb1}}</td>
+                        <td>{{user.fb2}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Grammar</th>
+                        <td>{{user.g2pre_a1}}</td>
+                        <td>{{user.ga1}}</td>
+                        <td>{{user.ga2}}</td>
+                        <td>{{user.gb1}}</td>
+                        <td>{{user.gb2}}</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Total</th>
+                        <td>{{user.pre_a1}}</td>
+                        <td>{{user.a1}}</td>
+                        <td>{{user.a2}}</td>
+                        <td>{{user.b1}}</td>
+                        <td>{{user.b2}}</td>
+                    </tr>
+                    
+                </table>
+            </div>
+    </body>
+</html>
