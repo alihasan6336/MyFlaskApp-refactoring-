@@ -873,9 +873,9 @@ def MovingForward():
         for finshedTest, testName in zip(["f_b1", "f_a2", "f_a1", "f_pre_a1"], ["B1", "A2", "A1", "Pre_A1"]):
             if SearchInTheDatabase("SELECT * FROM users WHERE (id = {0}) and {1} = 1".format(session['user_id'], finshedTest)):
                 testsNum = SearchInTheDatabase("SELECT * FROM tests WHERE (id = {0})".format(session['user_id']))
-                lastExamGrades = FetchFromTheDatabse("SELECT * FROM tests WHERE (id = {0}) and (test_num = {1})".format(session['user_id'], testsNum))[0][testName.lower()]
+                # lastExamGrades = FetchFromTheDatabse("SELECT * FROM tests WHERE (id = {0}) and (test_num = {1})".format(session['user_id'], testsNum))[0][testName.lower()]
                 
-                return render_template("moving_forward.html", text="Would you like to go to the next stage?", testName=testName, grades=lastExamGrades)
+                return render_template("moving_forward.html", text="Would you like to go to the next stage?", testName=testName)
 
         return render_template("moving_forward.html", start="Start", text="Would you like to start Pre A1?")
     
