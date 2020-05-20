@@ -30,6 +30,38 @@
         <div class="container" style="padding: 5px; padding-left: 20px;">
             {% for test in range(tests| length) %}
                 <table class="table table-striped" style=" margin-bottom: 35px;">
+                    {% if test == 0 and session['admin_logged_in']%}
+                        <tr>
+                            <th>Give pass</th>
+                                    
+                            {% if userRow.p_pre_a1 == 1 %}
+                            <th><a href="/p_pre_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
+                            {% else %}
+                            <th><a href="/p_pre_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
+                            {% endif %}
+                        
+
+                            {% if userRow.p_a1 == 1 %}
+                            <th><a href="/p_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
+                            {% else %}
+                            <th><a href="/p_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
+                            {% endif %}
+
+                            {% if userRow.p_a2 == 1 %}
+                            <th><a href="/p_a2/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
+                            {% else %}
+                            <th><a href="/p_a2/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
+                            {% endif %}
+
+                            {% if userRow.p_b1 %}
+                            <th><a href="/p_b1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
+                            {% else %}
+                            <th><a href="/p_b1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
+                            {% endif %}
+                            <td></td>
+                        </tr>
+                    {% endif %}
+
                     <tr>
                         <th></th>
                         <th>Pre_A1</th>

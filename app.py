@@ -821,7 +821,9 @@ def TestResults(id):
     userTests = list(FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", [id]))
     userTests.reverse()
 
-    return render_template('test_results.html', tests=userTests)
+    userRow = FetchFromTheDatabse("SELECT * FROM users WHERE id = {0}".format(id))[0]
+
+    return render_template('test_results.html', tests=userTests, userRow=userRow)
 
 # Delete user.
 @app.route('/delete/<string:id>/')
