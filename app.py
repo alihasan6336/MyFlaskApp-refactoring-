@@ -499,13 +499,8 @@ def TestPreA1():
         grammar2Marks = MarkingTheOneQuestionTestPart(p5Answers, "2grammar")
         totalMarks += grammar2Marks
 
-        # Put the test marks in the database.
-        testNumber = 1
-
-        # Determine the exam number.
-        if SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id']):
-            userOldTests = FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", str(session['user_id']))
-            testNumber = len(userOldTests) + 1
+        # Get the test numder for the user.
+        testNumber = SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id']) + 1
         
         # Insert the 'pre a1' test marks in the 'tests' table.
         PutChangesInDatabase("INSERT INTO tests(id, test_num, lpre_a1, rpre_a1, gpre_a1, fpre_a1, g2pre_a1, pre_a1) VALUES(%s, %s, %s, %s, %s, %s, %s, %s)",
@@ -578,13 +573,8 @@ def TestA1():
         grammarMarks = MarkingTheOneQuestionTestPart(p5Answers, "grammar")
         totalMarks += grammarMarks
 
-        # Put the test marks in the database.
-        testNumber = 1
-
-        # Determine the exam number.
-        if SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id']):
-            userOldTests = FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", str(session['user_id']))
-            testNumber = len(userOldTests)
+        # Get the test numder for the user.
+        testNumber = SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id'])
         
         # Update the 'A1' test marks in the 'tests' table.
         PutChangesInDatabase("UPDATE tests SET la1 = %s, ra1 = %s, va1 = %s, fa1 = %s, ga1 = %s, a1 = %s WHERE id = %s and test_num = %s",
@@ -656,13 +646,8 @@ def TestA2():
         grammarMarks = MarkingTheOneQuestionTestPart(p5Answers, "grammar")
         totalMarks += grammarMarks
 
-        # Put the test marks in the database.
-        testNumber = 1
-
-        # Determine the exam number.
-        if SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id']):
-            userOldTests = FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", str(session['user_id']))
-            testNumber = len(userOldTests)
+        # Get the test numder for the user.
+        testNumber = SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id'])
         
         # Update the 'A1' test marks in the 'tests' table.
         PutChangesInDatabase("UPDATE tests SET la2 = %s, ra2 = %s, va2 = %s, fa2 = %s, ga2 = %s, a2 = %s WHERE id = %s and test_num = %s",
@@ -734,13 +719,8 @@ def TestB1():
         grammarMarks = MarkingTheOneQuestionTestPart(p5Answers, "grammar")
         totalMarks += grammarMarks
 
-        # Put the test marks in the database.
-        testNumber = 1
-
-        # Determine the exam number.
-        if SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id']):
-            userOldTests = FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", str(session['user_id']))
-            testNumber = len(userOldTests)
+        # Get the test numder for the user.
+        testNumber = SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id'])
         
         # Update the 'A1' test marks in the 'tests' table.
         PutChangesInDatabase("UPDATE tests SET lb1 = %s, rb1 = %s, phb1 = %s, fb1 = %s, gb1 = %s, b1 = %s WHERE id = %s and test_num = %s",
@@ -808,13 +788,8 @@ def TestB2():
         grammarMarks = MarkingTheOneQuestionTestPart(p5Answers, "grammar")
         totalMarks += grammarMarks
 
-        # Put the test marks in the database.
-        testNumber = 1
-
-        # Determine the exam number.
-        if SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id']):
-            userOldTests = FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", str(session['user_id']))
-            testNumber = len(userOldTests)
+        # Get the test numder for the user.
+        testNumber = SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", session['user_id'])
         
         # Update the 'A1' test marks in the 'tests' table.
         PutChangesInDatabase("UPDATE tests SET lb2 = %s, rb2 = %s, vb2 = %s, fb2 = %s, gb2 = %s, b2 = %s WHERE id = %s and test_num = %s",
