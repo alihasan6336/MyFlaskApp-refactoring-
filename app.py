@@ -744,8 +744,8 @@ def TestB2():
         
         # Check if the user can take the test.
         userRow = FetchFromTheDatabseWithValue("SELECT * FROM users WHERE id = %s", session['user_id'])[0]
-        # if not userRow['got_b1'] or not userRow['f_b1'] or userRow['got_b2']:
-        #     return redirect(url_for("Logout"))
+        if not userRow['got_b1'] or not userRow['f_b1'] or userRow['got_b2']:
+            return redirect(url_for("Logout"))
 
         PutChangesInDatabase("UPDATE users SET got_b2 = 1 WHERE id = %s", [session['user_id']])
         
