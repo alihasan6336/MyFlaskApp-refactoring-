@@ -38,145 +38,61 @@
         </style>
 
 <script>
-
-                var count = 0;
-                var countt = 0;
+                var checkedBoxs = 0;
+                var checkedBoxs1 = 0;
 
                 function l(id){
-                        var listening = document.querySelector(id);
-                        var listeningg = document.querySelectorAll(".listening");
+                        var listeningId = document.querySelector(id);
+                        var allListening = document.querySelectorAll(".listening");
 
-                        if (listening.checked == true) {
-                                        count++;
-                                }
-                                if (listening.checked == false) {
-                                count--;
+                        if (listeningId.checked == true) {
+                                checkedBoxs++;
+                        } else {
+                                checkedBoxs--;
                         }
 
-                        if (count == 4) {
+                        if (checkedBoxs == 4) {
                                 
 
-                                for(var i = 0; i < 10; i ++) {
-                                        if (listeningg[i].checked == false) {
-                                                listeningg[i].disabled = true;
+                                for(var i = 0; i < 10; i++) {
+                                        if (allListening[i].checked == false) {
+                                                allListening[i].disabled = true;
                                         }
                                 }
                         }else {
                                 for(var i = 0; i < 10; i ++) {
-                                        listeningg[i].disabled = false;
+                                        allListening[i].disabled = false;
                                 }
                         }
                 }
 
 
-                function ll(id){
-                        var listening = document.querySelector(id);
-                        var listeningg = document.querySelectorAll(".reading");
+                function r(id){
+                        var listeningId = document.querySelector(id);
+                        var allListening = document.querySelectorAll(".reading");
 
-                        if (listening.checked == true) {
-                                        countt++;
+                        if (listeningId.checked == true) {
+                                checkedBoxs1++;
                                 }
-                                if (listening.checked == false) {
-                                countt--;
+                                if (listeningId.checked == false) {
+                                        checkedBoxs1--;
                         }
 
-                        if (countt == 4) {
+                        if (checkedBoxs1 == 4) {
                                 
 
                                 for(var i = 0; i < 10; i ++) {
-                                        if (listeningg[i].checked == false) {
-                                                listeningg[i].disabled = true;
+                                        if (allListening[i].checked == false) {
+                                                allListening[i].disabled = true;
                                         }
                                 }
                         }else {
                                 for(var i = 0; i < 10; i ++) {
-                                        listeningg[i].disabled = false;
+                                        allListening[i].disabled = false;
                                 }
                         }
                 }
 
-
-                function f1(){
-                        ll("#reading1")
-                }
-
-                function f2(){
-                        ll("#reading2")
-                }
-
-                function f3(){
-                        ll("#reading3")
-                }
-
-                function f4(){
-                        ll("#reading4")
-                }
-
-                function f5(){
-                        ll("#reading5")
-                }
-
-                function f6(){
-                        ll("#reading6")
-                }
-
-                function f7(){
-                        ll("#reading7")
-                }
-
-                function f8(){
-                        ll("#reading8")
-                }
-
-                function f9(){
-                        ll("#reading9")
-                }
-
-                function f10(){
-                        ll("#reading10")
-                }
-
-
-
-                function F1(){
-                        l("#listening1")
-                }
-
-                function F2(){
-                        l("#listening2")
-                }
-
-                function F3(){
-                        l("#listening3")
-                }
-
-                function F4(){
-                        l("#listening4")
-                }
-
-                function F5(){
-                        l("#listening5")
-                }
-
-                function F6(){
-                        l("#listening6")
-                }
-
-                function F7(){
-                        l("#listening7")
-                }
-
-                function F8(){
-                        l("#listening8")
-                }
-
-                function F9(){
-                        l("#listening9")
-                }
-
-                function F10(){
-                        l("#listening10")
-                }
 
                 function notR(name){
                         var x = document.getElementsByName(name);
@@ -193,10 +109,7 @@
                                         break;
                                 }
                         }
-
                 }
-
-
         </script>
 
         <script>
@@ -206,19 +119,16 @@
                         var audio = new Audio("{% block listening_file %} {% endblock %}");
                         audio.play();
                 }
-                
         </script>
 
         <script>
-                // Set the date we're counting down to
-           
-               var now = new Date().getTime();
-           
+                // Set the date we're counting down to     
+                var now = new Date().getTime();
                 var countDownDate = new Date(now + 1200000).getTime();
-                
+
                 // Update the count down every 1 second
                 var x = setInterval(function() {
-                
+               
                   // Get today's date and time
                   var now = new Date().getTime();
                     
@@ -231,6 +141,7 @@
                   try{
                         document.getElementById("demo").innerHTML = minutes + " :  " + seconds;
                   }catch{}
+
                   // If the count down is over, write some text 
                   if (distance < 0) {
                     try{
@@ -239,16 +150,15 @@
                             window.location = "/logout";
                     }
                     clearInterval(x);
-                    
                   }
                 }, 998);
         </script>
 
-        <script>
+        <!-- <script>
                 if (performance.navigation.type == 1) {
                         window.location = "/logout";
                 }
-        </script>
+        </script> -->
 
         <title>{% block title %} {% endblock %}</title>
     </head>
@@ -262,12 +172,12 @@
         </div>
     </body>
 
-    <script>
+    <!-- <script>
         $(document).ready(function() {
         function disablePrev() { window.history.forward() }
         window.onload = disablePrev();
         window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
         });
-</script>
+</script> -->
 
 </html>
