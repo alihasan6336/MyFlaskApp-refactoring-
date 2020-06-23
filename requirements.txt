@@ -1,6 +1,5 @@
 flask
 flask_mysqldb
 passlib
-functools
 gunicorn
 ptvsd
