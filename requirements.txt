@@ -1,7 +1,6 @@
 flask
 flask_mysqldb
-wtforms
 passlib
-flask_sqlalchemy
+functools
 gunicorn
 ptvsd

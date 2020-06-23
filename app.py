@@ -1,11 +1,8 @@
-from flask import Flask, render_template, url_for, redirect, session, request
+from flask import Flask, render_template, url_for, redirect, session, request, send_file
 from flask_mysqldb import MySQL
-from wtforms import Form
 from passlib.hash import sha256_crypt
 from functools import wraps
-import datetime
 import csv
-from flask import send_file
 import os
 
 
@@ -899,6 +896,13 @@ def RestPassword(id):
         PutChangesInDatabase("UPDATE users SET password = %s WHERE id = %s", (password, id))
 
         return redirect(url_for('Dashboard'))
+
+
+# Define a function to make the user pass a certain test.
+@app.route('/pass_test', methods=['POST'])
+@IsAdmin
+def GivaPass(id):
+    pass
         
 
 app.secret_key='secret123'
