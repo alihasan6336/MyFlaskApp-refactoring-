@@ -156,7 +156,7 @@
                           <td></td>
                           {% endif %}
               
-                          {% if user.pre_a1 != None or user.a1 != None or user.a2 != None or user.b1 != None or user.b2 != None %}
+                          {% if user['got_pre_a1'] != None %}
                           <td><span style="color: green; font-size: 30px;">•</span></td>
                           {%else%}
                           <td></td>

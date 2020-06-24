@@ -33,32 +33,14 @@
                     {% if test == 0 and session['admin_logged_in']%}
                         <tr>
                             <th>Give pass</th>
-                                    
-                            {% if userRow.p_pre_a1 == 1 %}
-                            <th><a href="/p_pre_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
-                            {% else %}
-                            <th><a href="/p_pre_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
-                            {% endif %}
-                        
 
-                            {% if userRow.p_a1 == 1 %}
-                            <th><a href="/p_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
-                            {% else %}
-                            <th><a href="/p_a1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
-                            {% endif %}
-
-                            {% if userRow.p_a2 == 1 %}
-                            <th><a href="/p_a2/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
-                            {% else %}
-                            <th><a href="/p_a2/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
-                            {% endif %}
-
-                            {% if userRow.p_b1 %}
-                            <th><a href="/p_b1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #4CAF50; color: white;">Passed</button></a></th>
-                            {% else %}
-                            <th><a href="/p_b1/{{ userRow.id }}/"><button type="button" class="btn btn-default " style="background-color: #d43f3a; color: white;">Pass</button></a></th>
-                            {% endif %}
-                            <td></td>
+                            {% for test in ['p_pre_a1', 'p_a1', 'p_a2', 'p_b1'] %}
+                                <th><a href="/pass_test/{{ userRow.id }}/{{ test }}">
+                                    <button type="button" class="btn btn-default " style="background-color: {% if  userRow[test] %} #4CAF50 {% else %} #d43f3a {% endif %}; color: white;">
+                                        {% if  userRow[test] %} Passed {% else %} Pass {% endif %}
+                                    </button>
+                                </a></th>
+                            {% endfor %}
                         </tr>
                     {% endif %}
 

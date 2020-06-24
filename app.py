@@ -9,6 +9,8 @@ import os
 app = Flask(__name__)
 
 app.config['SESSION_TYPE'] = 'filesystem'
+app.secret_key='secret123'
+
 
 # Config the database.
 if 'DB_USER' in os.environ :
@@ -812,7 +814,7 @@ def UserResults():
 # Tests results page for admins.
 @app.route('/tests_results/<string:id>')
 @IsAdmin
-def TestResults(id):
+def TestsResults(id):
 
     # Get user tests.
     userTests = list(FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", [id]))
@@ -826,13 +828,14 @@ def TestResults(id):
 @app.route('/delete/<string:id>/')
 @IsAdmin
 def Delete(id):
-   
-    # Delete the user row from 'users' table in the database.
-    PutChangesInDatabase("DELETE FROM users WHERE id = %s", [id])
 
-    # Delete users tests from 'tests' table.
-    for testNum in range(SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", [id])):
-        PutChangesInDatabase("DELETE FROM tests WHERE id = %s and test_num = %s", (id, testNum+1))
+    if "admin_can_d" in session:
+        # Delete the user row from 'users' table in the database.
+        PutChangesInDatabase("DELETE FROM users WHERE id = %s", [id])
+
+        # Delete users tests from 'tests' table.
+        for testNum in range(SearchInTheDatabaseWithValue("SELECT * FROM tests WHERE id = %s", [id])):
+            PutChangesInDatabase("DELETE FROM tests WHERE id = %s and test_num = %s", (id, testNum+1))
 
     return redirect(url_for('Dashboard'))
 
@@ -899,13 +902,20 @@ def RestPassword(id):
 
 
 # Define a function to make the user pass a certain test.
-@app.route('/pass_test', methods=['POST'])
+@app.route('/pass_test/<string:id>/<string:test>')
 @IsAdmin
-def GivaPass(id):
-    pass
-        
+def PassTest(id, test):
 
-app.secret_key='secret123'
+    # Get the value of the certain test.
+    passValue = 1
+    if SearchInTheDatabaseWithValue("SELECT * FROM users WHERE id = %s and " + test + " = 1", [id]):
+        passValue = 0
+
+    # Change the pass test value of that user.
+    PutChangesInDatabase("UPDATE users SET " + test + " = %s WHERE id = %s", [passValue, id])
+
+    return redirect('/tests_results/{0}'.format(id))
+        
 
 if __name__ == '__main__':
     
