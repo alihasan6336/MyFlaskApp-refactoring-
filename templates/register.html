@@ -10,15 +10,15 @@
 
 {% block labels %}
 <label style="font-size: 18px">Name<span style="color: red;">*</span></label>
-<input type="text" name="name" class="form-control">
+<input type="text" name="name" class="form-control" required autofocus>
 <label style="font-size: 18px">Phone<span style="color: red;">*</span></label>
-<input type="number" name="phone" class="form-control">
+<input type="number" name="phone" class="form-control" required>
 <label style="font-size: 18px">Email</label>
-<input type="text" name="email" class="form-control">
+<input type="email" name="email" class="form-control">
 <label style="font-size: 18px">Password<span style="color: red;">*</span></label>
-<input type="password" name="password" class="form-control" id="passwordlabel">
+<input type="password" name="password" class="form-control" id="passwordlabel" required>
 <label style="font-size: 18px">Confirm Password<span style="color: red;">*</span></label>
-<input type="password" name="confirm" class="form-control" id="confirmlabel">
+<input type="password" name="confirm" class="form-control" id="confirmlabel" required>
 {% endblock %}
 
 {% block submit_button %} Submit {% endblock %}
