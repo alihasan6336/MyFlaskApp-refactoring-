@@ -829,7 +829,9 @@ def TestsResults(id):
 @IsAdmin
 def Delete(id):
 
+    # Check if the admin is allowed to delete users.
     if "admin_can_d" in session:
+
         # Delete the user row from 'users' table in the database.
         PutChangesInDatabase("DELETE FROM users WHERE id = %s", [id])
 
@@ -915,7 +917,49 @@ def PassTest(id, test):
     PutChangesInDatabase("UPDATE users SET " + test + " = %s WHERE id = %s", [passValue, id])
 
     return redirect('/tests_results/{0}'.format(id))
+
+
+@app.route("/download_users")
+@IsAdmin
+def DownloadUsers():
+    
+    # Get all users data.
+    users = FetchFromTheDatabse("SELECT id, name, phone, email, date FROM users")
+
+    # Get the last test for each user.
+    usersTests = []
+    for user in users:
+        usersTests.append(FetchFromTheDatabse("SELECT * FROM tests WHERE test_num = (SELECT COUNT(*) FROM tests WHERE id = {0}) AND id = {0}".format(user['id'], user['id'])))
         
+    # for test in usersTests:
+    #     print(test, end="\n\n\n\n\n")
+
+    # wWite the data in the 'users,csv' file.
+    with open("users.csv", 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            'ID', 'Name', 'Phone', 'Email', 'Registration date', "Exam date", 
+            'Listening_Pre_A1', 'Reading_Pre_A1', 'Grammar_Pre_A1', 'Functional_language_Pre_A1', 'Grammar_Pre_A1', 'Pre_A1',
+            'listening_A1', 'Reading_A1', 'Vocabulary_A1', 'Functional_language_A1', 'Grammar_A1', 'A1', 
+            'listening_A2', 'Reading_A2', 'Vocabulary_A2', 'Functional_language_A2', 'Grammar_A2', 'A2', 
+            'listening_B1', 'Reading_B1', 'phonetics_B1', 'Functional_language_B1', 'Grammar_B1', 'B1', 
+            'listening_B2', 'Reading_B2', 'Vocabulary_B2', 'Functional_language_B2', 'Grammar_B2', 'B2', 
+            ])
+        
+        # for user in users:
+        #     writer.writerow([user]}
+
+    
+
+    return "Done"
+                
+
+    return send_file('users.csv',
+    mimetype='text/csv',
+    cache_timeout=0,
+    attachment_filename='users.csv',
+    as_attachment=True)
+
 
 if __name__ == '__main__':
     
