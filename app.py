@@ -929,30 +929,25 @@ def DownloadUsers():
     # Get the last test for each user.
     usersTests = []
     for user in users:
-        usersTests.append(FetchFromTheDatabse("SELECT * FROM tests WHERE test_num = (SELECT COUNT(*) FROM tests WHERE id = {0}) AND id = {0}".format(user['id'], user['id'])))
-        
-    # for test in usersTests:
-    #     print(test, end="\n\n\n\n\n")
+        usersTests.append(FetchFromTheDatabse("SELECT * FROM tests WHERE test_num = (SELECT COUNT(*) FROM tests WHERE id = {0}) AND id = {1}".format(user['id'], user['id'])))
 
-    # wWite the data in the 'users,csv' file.
-    with open("users.csv", 'w', newline='') as f:
-        writer = csv.writer(f)
+    # Wite the data in the 'users,csv' file.
+    with open("users.csv", 'w', newline='') as csvFile:
+        writer = csv.writer(csvFile)
+
+        # Write the file head.
         writer.writerow([
             'ID', 'Name', 'Phone', 'Email', 'Registration date', "Exam date", 
-            'Listening_Pre_A1', 'Reading_Pre_A1', 'Grammar_Pre_A1', 'Functional_language_Pre_A1', 'Grammar_Pre_A1', 'Pre_A1',
-            'listening_A1', 'Reading_A1', 'Vocabulary_A1', 'Functional_language_A1', 'Grammar_A1', 'A1', 
-            'listening_A2', 'Reading_A2', 'Vocabulary_A2', 'Functional_language_A2', 'Grammar_A2', 'A2', 
-            'listening_B1', 'Reading_B1', 'phonetics_B1', 'Functional_language_B1', 'Grammar_B1', 'B1', 
-            'listening_B2', 'Reading_B2', 'Vocabulary_B2', 'Functional_language_B2', 'Grammar_B2', 'B2', 
+            'Listening_Pre_A1(4)', 'Reading_Pre_A1(4)', 'Grammar_Pre_A1(4)', 'Functional_language_Pre_A1(4)', 'Grammar_Pre_A1(8)', 'Pre_A1(24)',
+            'listening_A1(4)', 'Reading_A1(4)', 'Vocabulary_A1(4)', 'Functional_language_A1(4)', 'Grammar_A1(8)', 'A1(24)', 
+            'listening_A2(4)', 'Reading_A2(4)', 'Vocabulary_A2(4)', 'Functional_language_A2(4)', 'Grammar_A2(8)', 'A2(24)', 
+            'listening_B1(4)', 'Reading_B1(4)', 'phonetics_B1(4)', 'Functional_language_B1(4)', 'Grammar_B1(8)', 'B1(24)', 
+            'listening_B2(4)', 'Reading_B2(4)', 'Vocabulary_B2(4)', 'Functional_language_B2(4)', 'Grammar_B2(8)', 'B2(24)', 
             ])
         
-        # for user in users:
-        #     writer.writerow([user]}
-
-    
-
-    return "Done"
-                
+        # Write users data.
+        for user, userTest in zip(users, usersTests):
+            writer.writerow(list(user.values()) + (list(userTest[0].values())[2:] if userTest else []))
 
     return send_file('users.csv',
     mimetype='text/csv',
