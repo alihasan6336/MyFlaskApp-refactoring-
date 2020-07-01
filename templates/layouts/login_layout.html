@@ -8,7 +8,7 @@
 
     <body>
         <div>
-            <img src="static/passion-pngc-01.png" alt="passion logo" width="200px" height="65px" {% block img_style %} {% endblock %}>
+            <img src="{{ url_for('static', filename='passion-pngc-01.png') }}" alt="passion logo" width="200px" height="65px" {% block img_style %} {% endblock %}>
         </div>
 
         <div class="row" style="margin: 0px;">
@@ -22,7 +22,7 @@
 
                     {% block labels %} {% endblock %}
                     <input type="checkbox" onclick="myFunction()"><span> Show Password</span> 
-                    <button type="submit" class="btn btn-block btn-lg btn-primary" style="margin-top: 5px; background-color: rgb(172, 5, 94); border-color: rgb(172, 5, 94); margin-bottom: 10px;">
+                    <button type="submit" class="btn btn-block btn-lg btn-primary hvr-wobble-horizontal" style="margin-top: 5px; background-color: rgb(172, 5, 94); border-color: rgb(172, 5, 94); margin-bottom: 10px;">
                         {% block submit_button %} {% endblock %}
                     </button>
                     
