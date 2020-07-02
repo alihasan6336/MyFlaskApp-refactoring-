@@ -45,7 +45,7 @@
 
                             {% for test in ['p_pre_a1', 'p_a1', 'p_a2', 'p_b1'] %}
                                 <th><a href="/pass_test/{{ userRow.id }}/{{ test }}">
-                                    <button type="button" class="btn btn-default " style="background-color: {% if  userRow[test] %} #4CAF50 {% else %} #d43f3a {% endif %}; color: white;">
+                                    <button type="button" class="btn {% if  userRow[test] %} btn-success {% else %} btn-danger {% endif %}">
                                         {% if  userRow[test] %} Passed {% else %} Pass {% endif %}
                                     </button>
                                 </a></th>
