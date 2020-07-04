@@ -5,13 +5,22 @@
 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script src="static/js/main_tests_script.js?version=1"></script>
+        <script src="static/js/main_tests_script.js?version=5"></script>
 
         <!-- <script>
                 if (performance.navigation.type == 1) {
                         window.location = "/logout";
                 }
         </script> -->
+
+        <script>
+            function playAudio(){
+                el = document.getElementById("playButton");
+                el.remove();
+                var audio = new Audio("{% block listening_file %} {% endblock %}");
+                audio.play();
+            }
+        </script>
 
         <title>{% block title %} {% endblock %}</title>
     </head>

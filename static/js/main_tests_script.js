@@ -72,16 +72,6 @@ function notR(name){
 }
 
 
-
-function playAudio(){
-        el = document.getElementById("playButton");
-        el.remove();
-        var audio = new Audio("{% block listening_file %} {% endblock %}");
-        audio.play();
-}
-
-
-
 // Set the date we're counting down to     
 var now = new Date().getTime();
 var countDownDate = new Date(now + 1200000).getTime();
