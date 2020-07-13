@@ -507,7 +507,7 @@ def TestPreA1():
 
 
         # If the user passed the test, redirect him to the next exam.
-        if totalMarks >= 1:
+        if totalMarks >= 19:
             return redirect(url_for("MovingForward"))
         
         # If the user didn't pass the test, redirect him to the 'UserResults' page.
@@ -580,7 +580,7 @@ def TestA1():
         (listeningMarks, readingMarks, vocabularyMarks, functionalMarks, grammarMarks, totalMarks, session['user_id'], testNumber))
 
         # If the user passed the test, redirect him to the next exam.
-        if totalMarks >= 1:
+        if totalMarks >= 19:
             return redirect(url_for("MovingForward"))
         
         # If the user didn't pass the test, redirect him to the 'UserResults' page.
@@ -653,7 +653,7 @@ def TestA2():
         (listeningMarks, readingMarks, vocabularyMarks, functionalMarks, grammarMarks, totalMarks, session['user_id'], testNumber))
 
         # If the user passed the test, redirect him to the next exam.
-        if totalMarks >= 1:
+        if totalMarks >= 19:
             return redirect(url_for("MovingForward"))
         
         # If the user didn't pass the test, redirect him to the 'UserResults' page.
@@ -726,7 +726,7 @@ def TestB1():
         (listeningMarks, readingMarks, phoneticsMarks, functionalMarks, grammarMarks, totalMarks, session['user_id'], testNumber))
 
         # If the user passed the test, redirect him to the next exam.
-        if totalMarks >= 1:
+        if totalMarks >= 19:
             return redirect(url_for("MovingForward"))
         
         # If the user didn't pass the test, redirect him to the 'UserResults' page.
