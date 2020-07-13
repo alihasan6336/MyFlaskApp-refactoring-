@@ -5,6 +5,11 @@ from functools import wraps
 import csv
 import os
 
+import pytz
+from pytz import timezone
+import tzlocal
+from datetime import timedelta
+
 
 app = Flask(__name__)
 
@@ -954,6 +959,16 @@ def DownloadUsers():
     cache_timeout=0,
     attachment_filename='users.csv',
     as_attachment=True)
+
+def datetimefilter(value, format="%Y-%m-%d %H:%M:%S"):
+    value = value + timedelta(weeks=0, days=0, hours=2, minutes=0, seconds=0)
+    # tz = pytz.timezone('America/Argentina/Buenos_Aires') # timezone you want to convert to from UTC
+    # utc = pytz.timezone('UTC')
+    # value = utc.localize(value, is_dst=None).astimezone(pytz.utc)
+    # local_dt = value.astimezone(tz)
+    return value.strftime(format)
+
+app.jinja_env.filters['datetimefilter'] = datetimefilter
 
 
 if __name__ == '__main__':
