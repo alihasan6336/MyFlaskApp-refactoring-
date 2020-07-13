@@ -36,7 +36,7 @@
                 <table class="table table-striped">
                     <tr>
                         <th style="padding-left: 17px;">RP</th>
-                        <th>ID</th>
+                        <!-- <th>ID</th> -->
                         <th>Name</th>
                         <th>Phone</th>
                         <th>Email</th>
@@ -54,7 +54,7 @@
                     {% for user in users %}
                     <tr>
                           <td><a href="/reset_password/{{user['id']}}/" class="hvr-grow"><img src="static/forgot-password-icon-22.jpg" alt="reset password" width="30px" height="30px" style="margin-left: 0px;"></td></a>
-                          <td><a href="/tests_results/{{user['id']}}" style="color: #333; text-decoration: none;">{{user['id']}}</a></td>
+                          <!-- <td><a href="/tests_results/{{user['id']}}" style="color: #333; text-decoration: none;">{{user['id']}}</a></td> -->
                           <td><a href="/tests_results/{{user['id']}}" style="color: #333; text-decoration: none;">{{user['name']}}</a></td>
                           <td><a href="/tests_results/{{user['id']}}" style="color: #333; text-decoration: none;">{{user['phone']}}</a></td>
                           <td><a href="/tests_results/{{user['id']}}" style="color: #333; text-decoration: none;">{{user['email']}}</a></td>
