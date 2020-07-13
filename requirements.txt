@@ -3,3 +3,5 @@ flask_mysqldb
 passlib
 gunicorn
 ptvsd
+pytz
+tzlocal
