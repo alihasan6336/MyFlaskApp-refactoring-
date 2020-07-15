@@ -28,6 +28,19 @@
     </head>
 
     <body style="background-color: rgb(158,31,99)">
+        {% if "admin_logged_in" in session %}
+            <nav class="navbar navbar-default" style="border-radius: 0">
+                <a class="navbar-brand" href="#">Passion</a>  
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="/dashboard">dashboard</a></li>
+                        </ul> 
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout">logout</a></li>
+                        </ul>
+                </div>
+            </nav>
+            {% endif %}
         <div class="container" style="padding: 5px; padding-left: 20px;">
             
             {% if not tests %}
@@ -39,14 +52,14 @@
             {% for test in range(tests| length) %}
                 <table class="table table-striped" style=" margin-bottom: 35px; border-radius: 20px;">
                     
-                    {% if test == 0 and session['admin_logged_in']%}
+                    {% if test == 0 and "admin_logged_in" in session%}
                         <t>
                             <th>Give pass</th>
 
                             {% for test in ['p_pre_a1', 'p_a1', 'p_a2', 'p_b1'] %}
                                 <th><a href="/pass_test/{{ userRow.id }}/{{ test }}">
                                     <button type="button" class="btn {% if  userRow[test] %} btn-success {% else %} btn-danger {% endif %}">
-                                        {% if  userRow[test] %} Passed {% else %} Pass {% endif %}
+                                        {% if  userRow[test] %} Passed {% else %} failed {% endif %}
                                     </button>
                                 </a></th>
                             {% endfor %}
@@ -130,7 +143,7 @@
             {% endfor %}
         </div>
 
-        {% if not session['admin_logged_in'] %}
+        {% if not "admin_logged_in" in session %}
             <h3>
                 <b>Contact us</b>
                 <a href="https://www.facebook.com/passiondottraining" target="_blank"><img src="{{ url_for('static', filename='facebook_icon.png') }}" alt="facebook_icon" class="c"  width="25px" height="25px"></a>

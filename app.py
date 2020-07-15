@@ -138,7 +138,7 @@ def Register():
         if len(email) > 50:
             return render_template("register.html", error="Invalid Email. Try again")
 
-        if len(password) < 3:
+        if len(password) < 6:
             return render_template("register.html", error="The password is too short. Try again") 
         
         if len(password) > 50:
@@ -185,7 +185,7 @@ def AdminRegister():
         if len(phone) < 8 or len(phone) > 16:
             return render_template("admin_register.html", error="Invalid phone number. Try again")
 
-        if len(password) < 3:
+        if len(password) < 6:
             return render_template("admin_register.html", error="The password is too short. Try again") 
         
         if len(password) > 50:
@@ -306,7 +306,7 @@ def AdminLogin():
 
         # Check the validity of the admin.
         if not adminRow['admin']:
-            return render_template("admin_login.html", error='You are not admin yet.')
+            return render_template("admin_login.html", error='You are not an admin yet.')
 
         session['admin_logged_in'] = True
         session['admin_name'] = adminRow['name']
@@ -853,13 +853,13 @@ def MovingForward():
 
     # In 'GET' request case.
     if request.method == 'GET':
-        
-        for finshedTest, testName in zip(["f_b1", "f_a2", "f_a1", "f_pre_a1"], ["B1", "A2", "A1", "Pre_A1"]):
+
+        tests = ["B1", "A2", "A1", "Pre_A1"]
+        for finshedTest, pastTestName in zip(["f_b1", "f_a2", "f_a1", "f_pre_a1"], tests):
             if SearchInTheDatabase("SELECT * FROM users WHERE (id = {0}) and {1} = 1".format(session['user_id'], finshedTest)):
                 testsNum = SearchInTheDatabase("SELECT * FROM tests WHERE (id = {0})".format(session['user_id']))
-                lastExamGrades = FetchFromTheDatabse("SELECT * FROM tests WHERE (id = {0}) and (test_num = {1})".format(session['user_id'], testsNum))[0][testName.lower()]
-                
-                return render_template("moving_forward.html", text="Would you like to go to the next stage?", testName=testName, grades=lastExamGrades)
+                lastExamGrades = FetchFromTheDatabse("SELECT * FROM tests WHERE (id = {0}) and (test_num = {1})".format(session['user_id'], testsNum))[0][pastTestName.lower()]
+                return render_template("moving_forward.html", text="Go to the next stage (" + tests[tests.index(pastTestName) - 1] + ")" if pastTestName != "B1" else "Go to the next stage (B2)", pastTestName=pastTestName, grades=lastExamGrades)
 
         return render_template("moving_forward.html", start="Start", text="Would you like to start Pre A1?")
     
@@ -894,7 +894,7 @@ def RestPassword(id):
 
         if passwordLen > 50:
             return render_template('reset_password.html', error = "Password is too long")
-        if passwordLen < 3:
+        if passwordLen < 6:
             return render_template('reset_password.html', error = "Password is too short")
         if password != confirm:
             return render_template('reset_password.html', error = "Passwords didn't mach. Try again")
@@ -962,10 +962,6 @@ def DownloadUsers():
 
 def datetimefilter(value, format="%Y-%m-%d %H:%M:%S"):
     value = value + timedelta(weeks=0, days=0, hours=2, minutes=0, seconds=0)
-    # tz = pytz.timezone('America/Argentina/Buenos_Aires') # timezone you want to convert to from UTC
-    # utc = pytz.timezone('UTC')
-    # value = utc.localize(value, is_dst=None).astimezone(pytz.utc)
-    # local_dt = value.astimezone(tz)
     return value.strftime(format)
 
 app.jinja_env.filters['datetimefilter'] = datetimefilter
