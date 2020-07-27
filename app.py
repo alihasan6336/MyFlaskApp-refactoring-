@@ -811,9 +811,12 @@ def UserResults():
     userTests = list(FetchFromTheDatabseWithValue("SELECT * FROM tests WHERE id = %s", [session['user_id']]))
     userTests.reverse()
 
+    # Get user data
+    userData = FetchFromTheDatabseWithValue("SELECT name, phone, email, date FROM users WHERE id = %s", [session['user_id']])[0]
+
     Logout()
 
-    return render_template('test_results.html', tests=userTests)
+    return render_template('test_results.html', tests=userTests, userData=userData)
      
     
 # Tests results page for admins.
