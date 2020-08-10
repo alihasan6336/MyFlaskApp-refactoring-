@@ -397,7 +397,7 @@ def Dashboard():
                 return render_template('dashboard.html', users=users)
 
             # Search in database by name.
-            users = FetchFromTheDatabseWithValue("SELECT * FROM users WHERE name = %s", searchValue)
+            users = FetchFromTheDatabse("SELECT * FROM users WHERE name LIKE '%{0}%'".format(searchValue))
             if users:
                 return render_template('dashboard.html', users=users)
             
