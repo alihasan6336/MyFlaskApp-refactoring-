@@ -172,11 +172,11 @@
                     
                     <tr>
                         <th scope="row"></th>
-                        <td><b>{% if tests[test].pre_a1 and tests[test].pre_a1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> failed &cross; </span>{% endif %}</b></td>
-                        <td><b>{% if tests[test].a1 and tests[test].a1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> failed &cross; </span>{% endif %}</b></td>
-                        <td><b>{% if tests[test].a2 and tests[test].a2 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> failed &cross; </span>{% endif %}</b></td>
-                        <td><b>{% if tests[test].b1 and tests[test].b1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> failed &cross; </span>{% endif %}</b></td>
-                        <td><b>{% if tests[test].b2 and tests[test].b2 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].pre_a1 and tests[test].pre_a1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].a1 and tests[test].a1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].a2 and tests[test].a2 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].b1 and tests[test].b1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].b2 and tests[test].b2 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
                     </tr>
                 </table>
             {% endfor %}
