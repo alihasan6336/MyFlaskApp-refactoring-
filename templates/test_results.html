@@ -86,8 +86,8 @@
 
                             {% for test in ['p_pre_a1', 'p_a1', 'p_a2', 'p_b1'] %}
                                 <th><a href="/pass_test/{{ userRow.id }}/{{ test }}">
-                                    <button type="button" class="btn {% if  userRow[test] %} btn-success {% else %} btn-danger {% endif %}">
-                                        {% if  userRow[test] %} Passed &check; {% else %} Give pass? {% endif %}
+                                    <button type="button" class="btn {% if  userRow[test] %} btn-danger {% else %} btn-success {% endif %}">
+                                        {% if  userRow[test] %} Remove pass {% else %} Give pass {% endif %}
                                     </button>
                                 </a></th>
                             {% endfor %}
