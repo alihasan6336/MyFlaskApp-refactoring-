@@ -1,11 +1,11 @@
 .parts{
-    border-left: 6px solid rgb(221, 109, 169);
     margin-bottom: 10px;
     margin-top: 20px;
-    background-color: #fadaec;
+    background-color: rgb(158,31,99);
     padding-left: 5px;
     font-size: 26px;
-    color: rgb(82, 59, 75)
+    color: whitesmoke;
+    border-radius: 10px;
 }
 
 .head{
