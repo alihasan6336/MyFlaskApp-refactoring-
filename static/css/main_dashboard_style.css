@@ -36,7 +36,7 @@
   }
   
   input:checked + .slider {
-    background-color: #4cae4c;
+    background-color: rgb(190, 0, 102);
   }
   
   input:checked + .slider:before {
@@ -74,4 +74,8 @@
     font-size: 17px;
     border: none;
     cursor: pointer;
+  }
+
+  ::selection {
+    background: rgba(158,31,99, .7);; 
   }
