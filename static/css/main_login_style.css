@@ -37,3 +37,6 @@ margin: 0;
 input[type=number] {
 -moz-appearance: textfield;
 }
+::selection {
+    background: rgba(158,31,99, .7);; 
+  }
