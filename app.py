@@ -969,6 +969,9 @@ def datetimefilter(value, format="%Y-%m-%d %H:%M:%S"):
 
 app.jinja_env.filters['datetimefilter'] = datetimefilter
 
+@app.route("/company_register")
+def CompanyRegister():
+    return render_template("company_register.html")
 
 if __name__ == '__main__':
     
