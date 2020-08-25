@@ -4,6 +4,7 @@ from passlib.hash import sha256_crypt
 from functools import wraps
 import csv
 import os
+from io import BytesIO
 
 import pytz
 from pytz import timezone
@@ -963,16 +964,120 @@ def DownloadUsers():
     attachment_filename='users.csv',
     as_attachment=True)
 
+
+# Edit the time to add 2 hours to the GMT.
 def datetimefilter(value, format="%Y-%m-%d %H:%M:%S"):
     value = value + timedelta(weeks=0, days=0, hours=2, minutes=0, seconds=0)
     return value.strftime(format)
 
 app.jinja_env.filters['datetimefilter'] = datetimefilter
 
-@app.route("/company_register")
-def CompanyRegister():
-    return render_template("company_register.html")
 
+def CheckShortLongValidation(min, max, lableValue):
+    if len(lableValue) < min:
+        return "short"
+    if len(lableValue) > max:
+        return "long"
+    
+    return True
+
+# Company Register page.
+@app.route("/company_register", methods=['GET', 'POST'])
+def CompanyRegister():
+
+    if request.method == 'GET':
+        return render_template("company_register.html")
+    
+    # In 'POST' request case.
+    else:
+
+        # Get the registration data from the form.
+        userName = request.form['userName']
+        businessName = request.form['businessName']
+        email = request.form['email']
+        phone = request.form['phone']
+        website = request.form['website']
+        facebook = request.form['facebook']
+        twitter = request.form['twitter']
+        country = request.form['country']
+        city = request.form['city']
+        zip = request.form['zip']
+        logo = request.files['logo']
+        businessAdress = request.form['businessAdress']
+        about = request.form['about']
+        commercialRegistrationNumber = request.form['commercialRegistrationNumber']
+        commercialRegistryFile = request.files['commercialRegistryFile']
+        personalIDNumber = request.form['personalIDNumber']
+        personalIDImage = request.files['personalIDImage']
+        taxID = request.form['taxID']
+        taxIDFile = request.files['taxIDFile']
+
+        # Check the validation of fields.
+        if len(userName) < 3:
+            return render_template("company_register.html", error="User name is too short. Try again")
+        if len(userName) > 30:
+            return render_template("company_register.html", error="User name is too long. Try again")
+
+        if len(businessName) > 30:
+            return render_template("company_register.html", error="Business name is too long. Try again")
+
+        if len(email) < 3:
+            return render_template("company_register.html", error="Email is too short. Try again")
+        if len(email) > 50:
+            return render_template("company_register.html", error="Email is too long. Try again")
+
+        if len(phone) < 8 or len(phone) > 16:
+            return render_template("company_register.html", error="Invalid phone number. Try again")
+
+        if len(country) > 60:
+            return render_template("company_register.html", error="Something went wrong. Try again")
+
+        if len(city) > 85:
+            return render_template("company_register.html", error="City name is too long. Try again")
+
+        if len(zip) > 10:
+            return render_template("company_register.html", error="ZIP code is too long. Try again")
+
+        if len(commercialRegistrationNumber) > 10:
+            return render_template("company_register.html", error="Commercial registration number is too long. Try again")
+
+        if len(personalIDNumber) > 20:
+            return render_template("company_register.html", error="Personal ID number is too long. Try again")
+       
+        if len(taxID) > 10:
+            return render_template("company_register.html", error="Tax ID is too long. Try again")
+
+        # Search 'user name' in the database.
+        if SearchInTheDatabaseWithValue("SELECT user_name FROM companies WHERE user_name = %s", userName):
+            return render_template("company_register.html", error="This user name is already used!")
+      
+        # Insert fields values in the database (companies table).
+        try:
+            PutChangesInDatabase("""INSERT INTO companies (user_name, business_name,
+                                    email, phone, website, facebook, twitter,
+                                    country, city, zip, logo, logo_name, business_address,
+                                    about, commercial_registration_number, 
+                                    commercial_registry_file, commercial_registry_file_name, personal_id_number,
+                                    personal_id_image, personal_id_image_name, tax_id, tax_id_file, tax_id_file_name) 
+                                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)""",
+            (userName, businessName, email, phone, website, facebook, twitter, country, city, zip, 
+                logo.read(), logo.filename, businessAdress, about, commercialRegistrationNumber,
+                commercialRegistryFile.read(), commercialRegistryFile.filename,
+                personalIDNumber, personalIDImage.read(), personalIDImage.filename, taxID, taxIDFile.read(), taxIDFile.filename))
+        except Exception as e:
+            print(e)
+            return render_template("company_register.html", error="Something went wrong.")
+
+        return render_template("company_register.html", success="You data has been saved!")
+
+# @app.route("/download")
+# def download():
+# #     logoImageRow = FetchFromTheDatabse("SELECT * FROM company_register")[0]
+#     logoImageRow = FetchFromTheDatabseWithValue("SELECT * FROM companies WHERE id = %s", 11)[0]
+
+#     # return send_file(BytesIO(logoImageRow['photo']), attachment_filename="image.png", as_attachment=True, cache_timeout=0)
+#     return send_file(BytesIO(logoImageRow['tax_id_file']), attachment_filename=logoImageRow['tax_id_file_name'], as_attachment=True, cache_timeout=0)
+# #     return render_template("test_show_image_from_database.html", r=logoImageRow)
 if __name__ == '__main__':
     
     if 'DB_USER' in os.environ:
