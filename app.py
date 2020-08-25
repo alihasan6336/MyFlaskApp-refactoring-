@@ -155,9 +155,12 @@ def Register():
         # Crypt the password befor put it it on the database.
         password = sha256_crypt.encrypt(str(password))
         
-        # Insert user data in the 'users' table.
-        PutChangesInDatabase("INSERT INTO users(name, phone, email, password) VALUES(%s, %s, %s, %s)",
-        (name, phone, email, password))
+        try:
+            # Insert user data in the 'users' table.
+            PutChangesInDatabase("INSERT INTO users(name, phone, email, password) VALUES(%s, %s, %s, %s)",
+            (name, phone, email, password))
+        except Exception as e:
+            print(e)
 
         return redirect(url_for("Login"))
 
