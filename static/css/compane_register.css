@@ -39,6 +39,12 @@ label {
     color: #fff;
 }
 
+.alert-success {
+    color: rgb(158,31,99);
+    background-color: #e6c3de;
+    border-color: #e6c3de;
+}
+
 .form-control:focus{border-color: rgb(158,31,99);  box-shadow: none; -webkit-box-shadow: 0px 0px 6px -1px rgba(158,31,99, 0.7);} 
 
 ::selection {

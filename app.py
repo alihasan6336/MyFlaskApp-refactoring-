@@ -973,14 +973,6 @@ def datetimefilter(value, format="%Y-%m-%d %H:%M:%S"):
 app.jinja_env.filters['datetimefilter'] = datetimefilter
 
 
-def CheckShortLongValidation(min, max, lableValue):
-    if len(lableValue) < min:
-        return "short"
-    if len(lableValue) > max:
-        return "long"
-    
-    return True
-
 # Company Register page.
 @app.route("/company_register", methods=['GET', 'POST'])
 def CompanyRegister():
