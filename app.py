@@ -376,23 +376,24 @@ def Dashboard():
         searchValue = str(request.form['search'])
 
         # Get the users who got the access to the exam.
-        usersIdWhoGotTheAccess = request.form.getlist('access')
+        # usersIdWhoGotTheAccess = request.form.getlist('access')
 
-        # Get all users who appear in the dashboard.
-        dashboardUsersId = request.form.getlist('allUsers')
-        dashboardUsers = []
-        for userId in dashboardUsersId:
-            dashboardUsers.append(FetchFromTheDatabseWithValue("SELECT * FROM users WHERE id = %s", userId))
+        # # Get all users who appear in the dashboard.
+        # dashboardUsersId = request.form.getlist('allUsers')
+        # dashboardUsers = []
+        # for userId in dashboardUsersId:
+        #     dashboardUsers.append(FetchFromTheDatabseWithValue("SELECT * FROM users WHERE id = %s", userId))
 
-        # Put the 'access' value in the database.
-        for user in dashboardUsers:
-            if str(user[0]['id']) in usersIdWhoGotTheAccess:
-                PutChangesInDatabase("UPDATE users SET access = 1 WHERE id = %s", [str(user[0]['id'])])
-            else:
-                PutChangesInDatabase("UPDATE users SET access = 0 WHERE id = %s", [str(user[0]['id'])])
+        # # Put the 'access' value in the database.
+        # for user in dashboardUsers:
+        #     if str(user[0]['id']) in usersIdWhoGotTheAccess:
+        #         PutChangesInDatabase("UPDATE users SET access = 1 WHERE id = %s", [str(user[0]['id'])])
+        #     else:
+        #         PutChangesInDatabase("UPDATE users SET access = 0 WHERE id = %s", [str(user[0]['id'])])
 
         # Check if admin searched for a user/s by name/number.
         if searchValue:
+
             # Get the search results from the database by phone/name.
 
             # Search in database by phone.
@@ -416,6 +417,16 @@ def Dashboard():
         users.reverse()
 
         return render_template("dashboard.html", users=users)
+
+
+@app.route("/dashboard/<user_id>/set-access", methods=['POST'])
+@IsAdmin
+def SetAccess(user_id):
+    accessValue = request.get_json()['access']
+
+    PutChangesInDatabase("UPDATE users SET access = %s WHERE id = %s", (accessValue, user_id))
+
+    return redirect(url_for("Dashboard"))
 
 
 # Check if user logged in.
