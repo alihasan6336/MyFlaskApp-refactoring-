@@ -17,6 +17,11 @@ app = Flask(__name__)
 app.config['SESSION_TYPE'] = 'filesystem'
 app.secret_key='secret123'
 
+@app.before_request
+def make_session_permanent():
+    session.permanent = True
+    app.permanent_session_lifetime = timedelta(days=365)
+
 
 # Config the database.
 if 'DB_USER' in os.environ :
