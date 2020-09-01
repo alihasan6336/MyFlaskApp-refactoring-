@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, redirect, session, request, send_file
+from flask import Flask, render_template, url_for, redirect, session, request, send_file, jsonify
 from flask_mysqldb import MySQL
 from passlib.hash import sha256_crypt
 from functools import wraps
@@ -402,13 +402,15 @@ def Dashboard():
             # Get the search results from the database by phone/name.
 
             # Search in database by phone.
-            users = FetchFromTheDatabseWithValue("SELECT * FROM users WHERE phone = %s", searchValue)
+            users = list(FetchFromTheDatabse("SELECT * FROM users WHERE phone LIKE '%{0}%'".format(searchValue)))
             if users:
+                users.reverse()
                 return render_template('dashboard.html', users=users)
 
             # Search in database by name.
-            users = FetchFromTheDatabse("SELECT * FROM users WHERE name LIKE '%{0}%'".format(searchValue))
+            users = list(FetchFromTheDatabse("SELECT * FROM users WHERE name LIKE '%{0}%'".format(searchValue)))
             if users:
+                users.reverse()
                 return render_template('dashboard.html', users=users)
             
             # If there is no results for the search, return the dashboard with no users.
@@ -433,6 +435,19 @@ def SetAccess(user_id):
 
     return redirect(url_for("Dashboard"))
 
+
+@app.route("/dashboard/search", methods=['GET', 'POST'])
+@IsAdmin
+def DashboardSearch():
+    searchValue = request.form["search"]
+    
+    result = list(FetchFromTheDatabse("SELECT * FROM users WHERE name LIKE '%{0}%'".format(searchValue)))
+    if not result:
+        result = list(FetchFromTheDatabse("SELECT * FROM users WHERE phone LIKE '%{0}%'".format(searchValue)))
+    result.reverse()
+    print(searchValue)
+
+    return jsonify(result)
 
 # Check if user logged in.
 def IsUserLoggedin(func):
