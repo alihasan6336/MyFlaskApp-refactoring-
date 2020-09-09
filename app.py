@@ -380,22 +380,6 @@ def Dashboard():
         # Get the search value.
         searchValue = str(request.form['search'])
 
-        # Get the users who got the access to the exam.
-        # usersIdWhoGotTheAccess = request.form.getlist('access')
-
-        # # Get all users who appear in the dashboard.
-        # dashboardUsersId = request.form.getlist('allUsers')
-        # dashboardUsers = []
-        # for userId in dashboardUsersId:
-        #     dashboardUsers.append(FetchFromTheDatabseWithValue("SELECT * FROM users WHERE id = %s", userId))
-
-        # # Put the 'access' value in the database.
-        # for user in dashboardUsers:
-        #     if str(user[0]['id']) in usersIdWhoGotTheAccess:
-        #         PutChangesInDatabase("UPDATE users SET access = 1 WHERE id = %s", [str(user[0]['id'])])
-        #     else:
-        #         PutChangesInDatabase("UPDATE users SET access = 0 WHERE id = %s", [str(user[0]['id'])])
-
         # Check if admin searched for a user/s by name/number.
         if searchValue:
 
@@ -471,7 +455,6 @@ def MarkingTheOneQuestionTestPart(rightAnswers, part):
 
 # Define a function to mark the one-questions test parts.
 def MarkingTheFourQuestionsTestPart(rightAnswers, part):
-
         partMarks = 0
         userPartAnswers = request.form.getlist(part)
 
@@ -1096,14 +1079,7 @@ def CompanyRegister():
 
         return render_template("company_register.html", success="You data has been saved!")
 
-# @app.route("/download")
-# def download():
-# #     logoImageRow = FetchFromTheDatabse("SELECT * FROM company_register")[0]
-#     logoImageRow = FetchFromTheDatabseWithValue("SELECT * FROM companies WHERE id = %s", 11)[0]
 
-#     # return send_file(BytesIO(logoImageRow['photo']), attachment_filename="image.png", as_attachment=True, cache_timeout=0)
-#     return send_file(BytesIO(logoImageRow['tax_id_file']), attachment_filename=logoImageRow['tax_id_file_name'], as_attachment=True, cache_timeout=0)
-# #     return render_template("test_show_image_from_database.html", r=logoImageRow)
 if __name__ == '__main__':
     
     if 'DB_USER' in os.environ:
