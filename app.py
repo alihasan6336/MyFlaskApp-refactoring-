@@ -33,7 +33,7 @@ if 'DB_USER' in os.environ :
 else :
     app.config["MYSQL_HOST"] = "localhost"
     app.config["MYSQL_USER"] = "root"
-    app.config["MYSQL_PASSWORD"] = "01019056673"
+    app.config["MYSQL_PASSWORD"] = "01019056677"
     app.config["MYSQL_DB"] = "passiontest"
     app.config["MYSQL_CURSORCLASS"] = "DictCursor"
 
