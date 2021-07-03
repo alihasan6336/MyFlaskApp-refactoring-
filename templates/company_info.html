@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Company dashboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="../static/css/company_dashboard.css?version=101">
+
+    <style>
+        table th {
+            background-color: #212529;
+            color: rgb(231, 231, 231);
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <table class="table" style="border-radius: 40px;">
+      <tbody>
+        <tr>
+          <th scope="col" style="border-top: 0em;">Business name</th>
+          <td scope="col" style="border-top: 0em;">{{ company.business_name }}</td>
+        </tr>
+        <tr>
+          <th scope="col">Email</th>
+          <td scope="col">{{ company.email }}</td>
+        </tr>
+        <tr>
+          <th scope="col">Phone</th>
+          <td scope="col">{{ company.phone }}</td>
+        </tr>
+        <tr>
+            <th scope="col">Website</th>
+            <td scope="col"><a href="//{{ company.website }}">{{ company.website }}</a></td>
+        </tr>
+        <tr>
+          <th scope="col">Facebook</th>
+          <td scope="col"><a href="//{{ company.facebook }}">{{ company.facebook }}</a></td>
+        </tr>
+        <tr>
+          <th scope="col">Twitter</th>
+          <td scope="col"><a href="//{{ company.twitter }}">{{ company.twitter }}</a></td>
+        </tr>
+        <tr>
+          <th scope="col">Country</th>
+          <td scope="col">{{ company.country }}</td>
+        </tr>
+        <tr>
+          <th scope="col">City</th>
+          <td scope="col">{{ company.city }}</td>
+        </tr>
+        <tr>
+          <th scope="col">ZIP</th>
+          <td scope="col">{{ company.zip }}</td>
+        </tr>
+        <tr>
+          <th scope="col">Logo</th>
+          <td scope="col">
+              <a href="/download_company_file/{{ company.id }}/logo">
+                  <button type="button" class="btn btn-outline-dark btn-block">Download</button>
+              </a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Business address</th>
+          <td scope="col">{{ company.business_address }}</td>
+        </tr>
+        <tr>
+          <th scope="col">About</th>
+          <td scope="col">{{ company.about }}</td>
+        </tr>
+        <tr>
+          <th scope="col">Commercial registration number</th>
+          <td scope="col">{{ company.commercial_registration_number }}</td>
+        </tr>
+        <tr>
+          <th scope="col">Commercial registry file</th>
+          <td scope="col">
+              <a href="/download_company_file/{{ company.id }}/commercial_registry_file">
+                <button type="button" class="btn btn-block btn-outline-dark">Download</button>
+              </a>
+          </td>
+        </tr>
+        <tr>
+        <tr>
+          <th scope="col">Personal ID number</th>
+          <td scope="col">{{ company.personal_id_number }}</td>
+        </tr>
+        <tr>
+        <tr>
+          <th scope="col">Personal ID image</th>
+          <td scope="col">
+              <a href="/download_company_file/{{ company.id }}/personal_id_image">
+                  <button type="button" class="btn btn-block btn-outline-dark">Download</button>
+              </a>
+          </td>
+        </tr>
+        <tr>
+          <th scope="col">Tax ID</th>
+          <td scope="col">{{ company.tax_id }}</td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+          <th scope="col">Tax ID file</th>
+          <td scope="col">
+              <a href="/download_company_file/{{ company.id }}/tax_id_file">
+                <button type="button" class="btn btn-block btn-outline-dark">Download</button>
+              </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+<script>
+</script>
+</body>
+</html>

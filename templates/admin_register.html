@@ -20,7 +20,7 @@
 {% block submit_button %} Submit {% endblock %}
 
 {% block register_or_login %}
-<a href="/admin_login" style="font-size: 16px; font-family: sans-serif; margin-left: 307px; color: rgb(158,31,99); text-decoration: none;">
+<a href="{% if company == 'passion' %} /admin_login {% else %} /{{ company }}/admin_login {% endif %}" style="font-size: 16px; font-family: sans-serif; margin-left: 307px; color: rgb(158,31,99); text-decoration: none;">
     <b class="c">Login</b>
 </a>
 {% endblock %}

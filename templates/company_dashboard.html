@@ -1,27 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>Company dashboard</title>
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../static/css/company_dashboard.css">
+    <script src="//code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <link rel="stylesheet" href="../static/css/company_dashboard.css?version=100">
 </head>
 <body>
-    <div class="container" >
-        <div class="card text-center">
-            <div class="card-header">
-              Featured
-            </div>
-            <div class="card-body">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="card-footer text-muted">
-              2 days ago
-            </div>
-          </div>
-    </div>
+  <div class="container">
+    <table class="table" style="border-radius: 40px;">
+      <thead class="thead-dark" style="background-color: #212529; color: rgb(231, 231, 231);">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Company user name</th>
+          <th scope="col">Quota</th>
+          <th scope="col">Admins</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for company in companiesData %}
+          <tr>
+            <th scope="row"></th>
+            <td><a href="company_info/{{ company.id }}"> {{ company.user_name }} </a></td>
+            <td style="padding-left: 0em;">
+              <form class="form-inline my-2 my-lg-0" method="POST" action="/adding_quota">
+                <input class="form-control mr-sm-2" name="quota" type="number" placeholder="{{ company.quota }}">
+                <input type="hidden" name="company" value="{{ company.user_name }}">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add<b>&#43;</b></button>
+              </form>
+            </td>
+
+            <td>
+              <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Dropdown button
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  {% for admin in admins if admin.company == company.user_name %}
+                    <div>
+                      <p class="dropdown-item" href="#">
+                        {{ admin.name }}
+                        <input type="checkbox" class="can_delete" style="float: right; margin-left: .5em;" {% if admin.can_d %} checked {% endif %} data-id="{{ admin.id }}" value="{{ admin.id }}">
+                        <input type="checkbox" class="is_admin" style="float: right; margin-left: .5em;" {% if admin.admin %} checked {% endif %} data-id="{{ admin.id }}" value="{{ admin.id }}">
+                      </p>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+    </table>
+
+  </div>
+
+  <script>
+    function setAdminsValidations(className, tableField) {
+      const CheckBoxs  = document.querySelectorAll(className);
+
+      for (let i = 0; i < CheckBoxs.length; i++) {
+          const checkbox = CheckBoxs[i];
+          checkbox.onchange = function (e) {
+              const adminId = e.target.dataset.id;
+              checked = 0
+              if (e.target.checked) {
+                checked = 1
+              }
+              fetch(tableField + adminId, {
+                  method: 'POST',
+                  body: JSON.stringify({
+                      "checked" : checked
+                  }),
+                  headers: {
+                      'Content-Type': 'application/json'
+                  }
+              })
+          }
+      }
+    }
+    
+    setAdminsValidations(".is_admin", "admin/");
+    setAdminsValidations(".can_delete", "can_d/");
+  </script>
+
+<script>
+</script>
 </body>
 </html>

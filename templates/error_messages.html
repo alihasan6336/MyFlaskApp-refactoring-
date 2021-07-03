@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>Test result</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="../static/css/hover.css" rel="stylesheet">
+        <link rel="icon" href="../static/passion-icon_p.png">
+
+   
+    </head>
+
+    <body style="background-image: url(../static/back_ground5.jpg); background-size: cover; background-attachment: fixed;">
+        <a href="http://www.passion-assessment.com/">
+            <img src="../static/passion-pngc-01.png" alt="passion logo" width="200px" height="65px" {% block img_style %} {% endblock %}>
+        </a>
+        <div class="container">
+            <div class="panel col-xs-12" style="text-align: center; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.80), 0 2px 10px 0 rgba(0,0,0,0.80)">
+                <span style="font-size: 1.5em; font-family: 'Roboto', sans-serif; color: rgb(158,31,99);"><b>{{ message }}</b></span>
+            </div>
+        </div>
+        
+    </body>
+</html>
