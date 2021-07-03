@@ -1077,7 +1077,7 @@ def CompanyRegister():
             print(e)
             return render_template("company_register.html", error="Something went wrong.")
 
-        return render_template("company_register.html", success="You data has been saved!")
+        return render_template("company_register.html", success="Your data has been saved!")
 
 
 if __name__ == '__main__':
