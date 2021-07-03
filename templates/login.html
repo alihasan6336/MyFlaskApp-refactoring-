@@ -1,0 +1,32 @@
+{% extends 'layouts/login_layout.html' %}
+
+{% block title %} Sign In • passion.com {% endblock %}
+
+{% block header %} Login: {% endblock %}
+
+{%block main_div_style%} style="padding-bottom: 15px;" {% endblock %}
+
+{% block labels %}
+<label>Phone</label>
+<input type="number" name="phone" class="form-control" autofocus required>
+<label>Password</label>
+<input type="password" name="password" class="form-control" id="passwordlabel" required>
+{% endblock %}
+
+{% block submit_button %} Continue {% endblock %}
+
+{% block register_or_login %}
+<a href="/register" style="font-size: 16px; font-family: sans-serif; margin-left: 307px; color: rgb(158,31,99); text-decoration: none;">
+    <b class="c">Register</b>
+</a>
+{% endblock %}
+
+{% block contact_us %}
+<h3 style="color: rgb(158,31,99); margin: 0;">
+    <b>Contact us</b>
+    <a href="https://www.facebook.com/passiondottraining" target="_blank"><img src="static/facebook_icon.png" alt="facebook_icon" class="c" width="25px" height="25px"></a>
+    <a href="http://www.passion-assessment.com/" target="_blank"><img src="static/web_icon.png" alt="website_icon" class="c" width="25px" height="25px"></a>
+</h3>
+{% endblock %}
+
+

@@ -1,0 +1,170 @@
+<html>
+    <head>
+        <title>Test result</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link href="../static/css/hover.css" rel="stylesheet">
+        <link rel="stylesheet" href="../static/css/test_results_style.css?version=2">
+        <link rel="icon" href="../static/passion-icon_p.png">
+
+
+        <style type="text/css" media="print">
+            .hideMeInPrint { display: none; }
+        </style>
+   
+    </head>
+
+    <body>
+        {% if "admin_logged_in" in session %}
+        <nav class="navbar navbar-default" style="border-radius: 0; background-color: rgb(158,31,99)">
+            <a class="navbar-brand" href="#" style="color: whitesmoke;">Passion</a>  
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-left">
+                            <li><a href="/dashboard" style="color: whitesmoke;" class="hvr-grow-rotate">dashboard</a></li>
+                        </ul> 
+                        <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/logout" style="color: whitesmoke;" class="hvr-grow-rotate">logout</a></li>
+                        </ul>
+                </div>
+            </nav>
+            {% endif %}
+        <div class="container" style="padding: 5px; padding-left: 20px;">
+
+                <table class="table" style="border-radius: 25px;">
+                    <thead class="thead-dark" style="background-color: #212529; color: rgb(231, 231, 231);">
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Phone</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Registration date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row"></th>
+                        <td>{{ userRow.name }}</td>
+                        <td>{{ userRow.phone }}</td>
+                        <td>{{ userRow.email }}</td>
+                        <td>{{ userRow.date | datetimefilter}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                {% if not tests %}
+                    <div class="panel col-xs-12" style="text-align: center; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.80), 0 2px 10px 0 rgba(0,0,0,0.80)">
+                        <span style="font-size: 1.5em; font-family: 'Roboto', sans-serif; color: rgb(158,31,99);"><b>This user has not taken any tests yet!</b></span>
+                    </div>
+                {% endif %}
+
+            {% for test in range(tests| length) %}
+                <table class="table table-striped" style="margin-bottom: 35px; border-radius: 20px;">
+                    
+                    {% if test == 0 and "admin_logged_in" in session%}
+                        <tr class="hideMeInPrint">
+                            <th></th>
+
+                            {% for test in ['p_pre_a1', 'p_a1', 'p_a2', 'p_b1'] %}
+                                <th><a href="/pass_test/{{ userRow.id }}/{{ test }}">
+                                    <button type="button" class="btn {% if  userRow[test] %} btn-danger {% else %} btn-success {% endif %}">
+                                        {% if  userRow[test] %} Remove pass {% else %} Give pass {% endif %}
+                                    </button>
+                                </a></th>
+                            {% endfor %}
+                            <th></th>
+                        </tr>
+                    {% endif %}
+                        
+                    <tr>
+                        <th></th>
+                        <th>Pre_A1</th>
+                        <th>A1</th>
+                        <th>A2</th>
+                        <th>B1</th>
+                        <th>B2</th>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">Listening</th>
+                        <td>{{tests[test].lpre_a1}}/4</td>
+                        <td>{{tests[test].la1}}/4</td>
+                        <td>{{tests[test].la2}}/4</td>
+                        <td>{{tests[test].lb1}}/4</td>
+                        <td>{{tests[test].lb2}}/4</td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">Reading</th>
+                        <td>{{tests[test].rpre_a1}}/4</td>
+                        <td>{{tests[test].ra1}}/4</td>
+                        <td>{{tests[test].ra2}}/4</td>
+                        <td>{{tests[test].rb1}}/4</td>
+                        <td>{{tests[test].rb2}}/4</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Vocabulary</th>
+                        <td>{{tests[test].gpre_a1}}/4 <b>(Grammar)</b></td>
+                        <td>{{tests[test].va1}}/4</td>
+                        <td>{{tests[test].va2}}/4</td>
+                        <td>{{tests[test].phb1}}/4 <b>(phonetics)</b></td>
+                        <td>{{tests[test].vb2}}/4</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Functional language</th>
+                        <td>{{tests[test].fpre_a1}}/4</td>
+                        <td>{{tests[test].fa1}}/4</td>
+                        <td>{{tests[test].fa2}}/4</td>
+                        <td>{{tests[test].fb1}}/4</td>
+                        <td>{{tests[test].fb2}}/4</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Grammar</th>
+                        <td>{{tests[test].g2pre_a1}}/8</td>
+                        <td>{{tests[test].ga1}}/8</td>
+                        <td>{{tests[test].ga2}}/8</td>
+                        <td>{{tests[test].gb1}}/8</td>
+                        <td>{{tests[test].gb2}}/8</td>
+                    </tr>
+
+                    <tr>
+                        <th scope="row">Total</th>
+                        <td>{{tests[test].pre_a1}}/24</td>
+                        <td>{{tests[test].a1}}/24</td>
+                        <td>{{tests[test].a2}}/24</td>
+                        <td>{{tests[test].b1}}/24</td>
+                        <td>{{tests[test].b2}}/24</td>
+                    </tr>
+
+                    <tr>
+                        <th>Date</th>
+                        <td><b>{{tests[test].date | datetimefilter }}</b></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row"></th>
+                        <td><b>{% if tests[test].pre_a1 and tests[test].pre_a1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].a1 and tests[test].a1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].a2 and tests[test].a2 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].b1 and tests[test].b1 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                        <td><b>{% if tests[test].b2 and tests[test].b2 >= 19 %}<span style="color: green;">Passed &check; </span>{% else %}<span style="color: red;"> Failed &cross; </span>{% endif %}</b></td>
+                    </tr>
+                </table>
+            {% endfor %}
+        </div>
+
+        {% if not "admin_logged_in" in session %}
+            <h3>
+                <b>Contact us</b>
+                <a href="https://www.facebook.com/passiondottraining" target="_blank"><img src="{{ url_for('static', filename='facebook_icon.png') }}" alt="facebook_icon" class="c"  width="25px" height="25px"></a>
+                <a href="http://www.passion-assessment.com/" target="_blank"><img src="{{ url_for('static', filename='web_icon.png') }}" alt="website_icon" class="c" width="25px" height="25px"></a>
+            </h3>
+        {% endif %}
+    </body>
+</html>

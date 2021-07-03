@@ -1,0 +1,280 @@
+{% extends 'layouts/tests_layout.html' %}
+
+{% block title %}Test A2{% endblock %}
+
+{% block listening_file %} static/Recording_C.mp3 {% endblock %}
+
+{% block contant %}
+<h1 style="text-align: center">A2</h1>
+
+                <ul>
+                        <form action="" method="POST"  name="myForm">
+
+                                <li class="parts">Part 1: Listening</li>
+                                
+                                <span class="head">Listen to a telephone conversation between two people preparing to go on a trip. Mark the four statements which are correct. [4 marks]</span>
+
+                                <div style="text-align: center; margin: 15px">
+                                        <button style="border: none; background-color:initial;" onclick="playAudio()" id="playButton" type="button"><img src="{{  url_for('static', filename='/download1.png') }}" alt="" width="50px" height="50px"></button>
+                                </div>
+
+                                <ol type="A" style="font-size: 18px">
+                                        <li><input type="checkbox" value="A" name="listening" id='listening1' class="listening" onclick="l('#listening1')"> Neil asks Lucy to pack his black shoes.</li><br>
+                                        <li><input type="checkbox" value="B" name="listening" id='listening2' class="listening" onclick="l('#listening2')">  They are going to do a lot of sightseeing.</li><br>
+                                        <li><input type="checkbox" value="C" name="listening" id='listening3' class="listening" onclick="l('#listening3')">  Neil doesn’t think it will rain.</li><br>
+                                        <li><input type="checkbox" value="D" name="listening" id='listening4' class="listening" onclick="l('#listening4')">  Lucy suggests they pack some smart clothes.</li><br>
+                                        <li><input type="checkbox" value="E" name="listening" id='listening5' class="listening" onclick="l('#listening5')"> They are planning to hire a car when they arrive.</li><br>
+                                        <li><input type="checkbox" value="F" name="listening" id='listening6' class="listening" onclick="l('#listening6')">  They are going to a country where everyone speaks English.</li><br>
+                                        <li><input type="checkbox" value="G" name="listening" id='listening7' class="listening" onclick="l('#listening7')">  Lucy doesn’t think they should pack sun cream.</li><br>
+                                        <li><input type="checkbox" value="H" name="listening" id='listening8' class="listening" onclick="l('#listening8')">  Neil is going to the airport now.</li><br>
+                                        <li><input type="checkbox" value="I" name="listening" id='listening9' class="listening" onclick="l('#listening9')">  Lucy will phone Neil if she thinks of anything else.</li><br>
+                                        <li><input type="checkbox" value="J" name="listening" id='listening10' class="listening" onclick="l('#listening10')">  They’re going to meet at the airport at 5 o’clock.</li><br>
+                                </ol>
+
+                                <li class="parts">Part 2: Reading</li>
+                                
+                                <span class="head">Read the five texts quickly and choose the correct answer (A–D) for each question (1–4).</span><br>
+                                
+
+                                <div class="readingBox">During the last ten years, Ameet has had ten
+
+                                        different jobs: he has worked in an import-
+                                        export business, he has been an estate agent
+                                        
+                                        and now he has just started his own company
+                                        which sells mobile phones – but he hasn’t
+                                        made a million pounds yet!
+                                        Edward has moved to the United States,
+                                        where he now works, designing computer
+                                        games. His most popular game, Death Rider,
+                                        has already sold over ten million copies, and
+                                        has made him very rich! He isn’t married, in
+                                        fact, he’s never had a girlfriend, and he still
+                                        spends most of his time playing computer
+                                        games in his bedroom.
+                                        Lucy is an actress and a part-time waitress. In
+                                        the last few years, she’s appeared in several
+                                        plays and a couple of TV commercials – but
+                                        there has been no call from Hollywood yet!
+                                        Since leaving university with a brilliant
+                                        degree, Kate has worked for Greenpeace and
+                                        other similar organisations, first as a
+                                        volunteer and now as a manager. She’s just
+                                        had her first baby.
+                                        In the last ten years, Hannah has got married,
+                                        and has lived in Italy, Egypt, France and
+                                        Australia. At present, she’s running a bar on
+                                        the Greek island of Kos with her husband,
+                                        Nikos.
+                                </div>
+
+                                <ol>
+                                        <li class="q2">Who has earned the most money?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                        <li><input type="checkbox" value="A" name="reading1" onclick="notR('reading1')"> Ameet</li><br>
+                                        <li><input type="checkbox" value="B" name="reading1" onclick="notR('reading1')"> Lucy</li><br>
+                                        <li><input type="checkbox" value="C" name="reading1" onclick="notR('reading1')"> Hannah</li><br>
+                                        <li><input type="checkbox" value="D" name="reading1" onclick="notR('reading1')"> Edward</li><br>
+                                        </ol>
+
+                                        <li class="q2">Who works in a bar?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading2" onclick="notR('reading2')"> Ameet</li><br>
+                                                <li><input type="checkbox" value="B" name="reading2" onclick="notR('reading2')"> Lucy</li><br>
+                                                <li><input type="checkbox" value="C" name="reading2" onclick="notR('reading2')"> Hannah</li><br>
+                                                <li><input type="checkbox" value="D" name="reading2" onclick="notR('reading2')"> Edward</li><br>
+                                        </ol>
+
+                                        <li class="q2">Who has appeared on television?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading3" onclick="notR('reading3')"> Kate</li><br>
+                                                <li><input type="checkbox" value="B" name="reading3" onclick="notR('reading3')"> Lucy</li><br>
+                                                <li><input type="checkbox" value="C" name="reading3" onclick="notR('reading3')"> Hannah</li><br>
+                                                <li><input type="checkbox" value="D" name="reading3" onclick="notR('reading3')"> Edward</li><br>
+                                        </ol>
+
+                                        <li class="q2">Who worked for no money?</li><br>
+                                        
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading4" onclick="notR('reading4')"> Edward</li><br>
+                                                <li><input type="checkbox" value="B" name="reading4" onclick="notR('reading4')"> Lucy</li><br>
+                                                <li><input type="checkbox" value="C" name="reading4" onclick="notR('reading4')"> Hannah</li><br>
+                                                <li><input type="checkbox" value="D" name="reading4" onclick="notR('reading4')"> Kate</li><br>
+                                        </ol>
+
+                                </ol>
+
+                                <li class="parts">Part 3: Vocabulary</li>
+
+                                <span class="head">Choose the correct word (A–D) to complete each phrase (1–4).</span><br>
+
+                                <ol>
+                                        <li class="q2">I’m looking _____ to seeing my friend next week.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary1" onclick="notR('vocabulary1')"> forward</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary1" onclick="notR('vocabulary1')"> about</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary1" onclick="notR('vocabulary1')"> for</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary1" onclick="notR('vocabulary1')"> out</li><br>
+                                        </ol>
+
+                                        <li class="q2">She thinks all Spanish men look _____  Antonio Banderas!</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary2" onclick="notR('vocabulary2')"> after</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary2" onclick="notR('vocabulary2')"> about</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary2" onclick="notR('vocabulary2')"> like</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary2" onclick="notR('vocabulary2')"> same</li><br>
+                                        </ol>
+
+                                        <li class="q2">Can you look _____ Bill’s address?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary3" onclick="notR('vocabulary3')"> up</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary3" onclick="notR('vocabulary3')"> forward</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary3" onclick="notR('vocabulary3')"> out</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary3" onclick="notR('vocabulary3')"> on</li><br>
+                                        </ol>
+
+                                        <li class="q2">I’m looking _____ my coat. Have you seen it?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary4" onclick="notR('vocabulary4')"> out</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary4" onclick="notR('vocabulary4')"> after</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary4" onclick="notR('vocabulary4')"> for</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary4" onclick="notR('vocabulary4')"> towards</li><br>
+                                        </ol>
+
+                                </ol>
+
+                                <li class="parts">Part 4: Functional language</li>
+
+                                <span class="head">Choose the best answer (A–D) for each question (1–4).</span><br>
+
+                                <ol>
+                                        <li class="q2">Your letter begins ‘Dear Sir’, what do you write above your signature?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language1" onclick="notR('functional_language1')"> Yours faithfully</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language1" onclick="notR('functional_language1')"> Yours sincerely</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language1" onclick="notR('functional_language1')"> With love</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language1" onclick="notR('functional_language1')"> Your obedient servant,</li><br>
+                                        </ol>
+
+                                        <li class="q2">Where exactly is New York?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language2" onclick="notR('functional_language2')"> On this side of the USA.</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language2" onclick="notR('functional_language2')"> On the right hand side of the USA.</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language2" onclick="notR('functional_language2')"> In the east coast of the USA.</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language2" onclick="notR('functional_language2')"> On the east coast of the USA.</li><br>
+                                        </ol>
+
+                                        <li class="q2">You walk into a shop. What does the shop assistant say to you?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language3" onclick="notR('functional_language3')"> What do you want?</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language3" onclick="notR('functional_language3')"> Can I help you?</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language3" onclick="notR('functional_language3')"> Do you want to buy something?</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language3" onclick="notR('functional_language3')"> What would you like to buy?</li><br>
+                                        </ol>
+
+                                        <li class="q2">Your restaurant bill says ‘service not included’. What should you do?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language4" onclick="notR('functional_language4')"> Pay by credit card.</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language4" onclick="notR('functional_language4')"> Get your own food.</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language4" onclick="notR('functional_language4')"> Leave a tip for the waiter.</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language4" onclick="notR('functional_language4')"> Ask for a receipt.</li><br>
+                                        </ol>
+                                        
+                                </ol>
+
+                                <li class="parts">Part 5: Grammar</li>
+
+                                <span class="head">Choose the correct word or phrase (A–D) to complete each sentence (1–8).</span><br>
+
+                                <ol>
+                                        <li class="q2">The Roxy Cinema closed seven years _____ .</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar1" onclick="notR('grammar1')"> ago</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar1" onclick="notR('grammar1')"> yet</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar1" onclick="notR('grammar1')"> before</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar1" onclick="notR('grammar1')"> on</li><br>
+                                        </ol>
+
+                                        <li class="q2">You _____ park your car on the pavement. It’s not permitted.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar2" onclick="notR('grammar2')"> don’t have to</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar2" onclick="notR('grammar2')"> ought to</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar2" onclick="notR('grammar2')"> needn’t</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar2" onclick="notR('grammar2')"> shouldn’t</li><br>
+                                        </ol>
+
+                                                <li class="q2">My hair is _____ than my sister’s.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar3" onclick="notR('grammar3')"> straightest</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar3" onclick="notR('grammar3')"> straighter</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar3" onclick="notR('grammar3')"> more straight</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar3" onclick="notR('grammar3')"> straight</li><br>
+                                        </ol>
+
+                                        <li class="q2">She’s been in India _____ 1999.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar4" onclick="notR('grammar4')"> for</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar4" onclick="notR('grammar4')"> in</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar4" onclick="notR('grammar4')"> since</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar4" onclick="notR('grammar4')"> at</li><br>
+                                        </ol>
+
+                                        <li class="q2">How long _____ you _____ a soldier?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar5" onclick="notR('grammar5')"> have/ been</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar5" onclick="notR('grammar5')"> has / been</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar5" onclick="notR('grammar5')"> did / be</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar5" onclick="notR('grammar5')"> were / being</li><br>
+                                        </ol>
+
+                                        <li class="q2">Yes, I’ll come to the party but I _____ arrive late.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar6" onclick="notR('grammar6')"> might</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar6" onclick="notR('grammar6')"> perhaps</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar6" onclick="notR('grammar6')"> may be</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar6" onclick="notR('grammar6')"> should</li><br>
+                                        </ol>
+
+                                        <li class="q2">Stop _____ lazy. Go out and dig the garden!</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar7" onclick="notR('grammar7')"> being</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar7" onclick="notR('grammar7')"> been</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar7" onclick="notR('grammar7')"> be</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar7" onclick="notR('grammar7')"> to be</li><br>
+                                        </ol>
+
+                                        <li class="q2">She said that she _____ never seen him before.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar8" onclick="notR('grammar8')"> had</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar8" onclick="notR('grammar8')"> would</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar8" onclick="notR('grammar8')"> has</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar8" onclick="notR('grammar8')"> haven’t</li><br>
+                                        </ol>
+                                        
+                                </ol>
+
+                                <div style="text-align: center;"><button type="submit" class="btn btn-default" style="background-color: #4CAF50; color: white; margin-bottom: 10px; margin-top: 10px; margin-right: 15px;">Submit and go to the next stage</button></div>
+
+                        </form>
+
+                </ul>
+{% endblock %}

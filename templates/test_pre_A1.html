@@ -1,0 +1,244 @@
+{% extends 'layouts/tests_layout.html' %}
+
+{% block title %}Test Pre A1{% endblock %}
+
+{% block listening_file %} static/Recording_A.mp3 {% endblock %}
+
+{% block contant %}
+<h1 style="text-align: center">Pre-A1</h1>
+
+                <ul>
+                    <form action="" method="POST" id='myForm' name="myForm">
+                        <li class="parts">Part 1: Listening</li>
+
+                        <span class="head">Listen to someone speak about their childhood in Scotland in the 1930s. Mark the four statements which are correct.<br> [4 marks]</span>
+
+                        <div style="text-align: center; margin: 15px">
+                                <button style="border: none; background-color:initial;" onclick="playAudio()" id="playButton" type="button"><img src="static/download1.png" alt="" width="50px" height="50px"></button>
+                        </div>
+
+                        <!-- {{ url_for('static', filename='/Recording_A.mp3') }} -->
+
+                        
+                        <ol type="A" style="font-size: 18px">
+                            <li><input type="checkbox" value="A" name="listening" id='listening1' class="listening" onclick="l('#listening1')"> In the 1930s, my family lived in a village in Scotland.</li><br>
+                            <li><input type="checkbox" value="B" name="listening" id='listening2' class="listening" onclick="l('#listening2')">  We didn’t have a TV but we listened to the radio every morning.</li><br>
+                            <li><input type="checkbox" value="C" name="listening" id='listening3' class="listening" onclick="l('#listening3')">  The school was six miles from our house.</li><br>
+                            <li><input type="checkbox" value="D" name="listening" id='listening4' class="listening" onclick="l('#listening4')">  We walked to school every day.</li><br>
+                            <li><input type="checkbox" value="E" name="listening" id='listening5' class="listening" onclick="l('#listening5')"> When I was 14, I left school.</li><br>
+                            <li><input type="checkbox" value="F" name="listening" id='listening6' class="listening" onclick="l('#listening6')">  I went to the cinema in our village every Saturday afternoon.</li><br>
+                            <li><input type="checkbox" value="G" name="listening" id='listening7' class="listening" onclick="l('#listening7')">  My family left Scotland when I was 15 and moved to England.</li><br>
+                            <li><input type="checkbox" value="H" name="listening" id='listening8' class="listening" onclick="l('#listening8')">  I often go back to the village in Scotland.</li><br>
+                        </ol>
+
+                        <li class="parts">Part 2: Reading</li>
+                        
+                        <span class="head">Read the text and mark the correct answer (A–C) to each question (1–4).</span><br>
+
+                        <div class="readingBox">Estelle Dupont was 100 years old in 2000. She
+                            was born near Bordeaux in France, where her
+                            father was a rich businessman. Today she
+                            lives in an old people’s home in Paris.
+                            “My father was a rich businessman and we
+                            lived in a chateau about ten kilometres from
+                            Bordeaux. Our home was very comfortable.
+                            The house was very big – there were twenty
+                            bedrooms, beautiful gardens and lots of
+                            servants. But my childhood wasn’t happy. I
+                            was an only child, and my mother was
+                            always ill. She died when I was eight, and my
+                            father died two years later when I was ten. It
+                            was a very bad time. I was a very unhappy
+                            child, but life is better now.”
+                        </div>
+                        
+                        <ol>
+                            <li style="font-size: 20px; margin-top: 12px">How old was Estelle Dupont in 1967?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="reading1" onclick="notR('reading1')"> She was living in Bordeaux.</li><br>
+                                <li><input type="checkbox" value="B" name="reading1" onclick="notR('reading1')"> She was 67 years old.</li><br>
+                                <li><input type="checkbox" value="C" name="reading1" onclick="notR('reading1')"> She was a hundred years old.</li><br>
+                            </ol>
+                            <!--  style="margin-bottom: 10px;" -->
+
+                            <li class="q2">Where did she live when she was a child?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="reading2" onclick="notR('reading2')"> She lived in the city of Bordeaux, France.</li><br>
+                                    <li><input type="checkbox" value="B" name="reading2" onclick="notR('reading2')"> She lived in an old people’s home in Paris.</li><br>
+                                    <li><input type="checkbox" value="C" name="reading2" onclick="notR('reading2')">  She lived in a chateau near Bordeaux.</li><br>
+                            </ol>
+
+                            <li class="q2">Did she like the gardens at the chateau?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="reading3" onclick="notR('reading3')">  Yes, she said they were beautiful.</li><br>
+                                    <li><input type="checkbox" value="B" name="reading3" onclick="notR('reading3')"> Yes, she said they were very big.</li><br>
+                                    <li><input type="checkbox" value="C" name="reading3" onclick="notR('reading3')">  No, because she had no one to play with.</li><br>
+                            </ol>
+
+                            <li class="q2">What happened to her parents?</li><br>
+                            
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="reading4" onclick="notR('reading4')"> Estelle’s mother died two years after her father.</li><br>
+                                    <li><input type="checkbox" value="B" name="reading4" onclick="notR('reading4')"> Her father died two years after her mother.</li><br>
+                                    <li><input type="checkbox" value="C" name="reading4" onclick="notR('reading4')">  She was an only child.</li><br>
+                            </ol>
+
+                        </ol>
+
+                        <li class="parts">Part 3: Grammar</li>
+
+                        <span class="head">Mark the correct word (A–C) to complete each sentence (1–4).</span><br>
+
+                        <ol>
+                            <li class="q2">My sister likes Mexican food, but I don’t like _____.</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="grammar1" onclick="notR('grammar1')"> it</li><br>
+                                    <li><input type="checkbox" value="B" name="grammar1" onclick="notR('grammar1')"> them</li><br>
+                                    <li><input type="checkbox" value="C" name="grammar1" onclick="notR('grammar1')"> her</li><br>
+                            </ol>
+
+                            <li class="q2">Does _____ friend like classical music?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="grammar2" onclick="notR('grammar2')"> your</li><br>
+                                    <li><input type="checkbox" value="B" name="grammar2" onclick="notR('grammar2')"> you</li><br>
+                                    <li><input type="checkbox" value="C" name="grammar2" onclick="notR('grammar2')"> yours</li><br>
+                            </ol>
+
+                            <li class="q2">My parents haven’t got calculators, but _____ have a computer at home.</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="grammar3" onclick="notR('grammar3')"> it</li><br>
+                                    <li><input type="checkbox" value="B" name="grammar3" onclick="notR('grammar3')"> them</li><br>
+                                    <li><input type="checkbox" value="C" name="grammar3" onclick="notR('grammar3')"> they</li><br>
+                            </ol>
+
+                            <li class="q2">I really like Craig David’s music. My older brother gave _____ some of his CDs.</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="grammar4" onclick="notR('grammar4')"> me</li><br>
+                                    <li><input type="checkbox" value="B" name="grammar4" onclick="notR('grammar4')"> them</li><br>
+                                    <li><input type="checkbox" value="C" name="grammar4" onclick="notR('grammar4')"> my</li><br>
+                            </ol>
+
+                        </ol>
+
+                        <li class="parts">Part 4: Functional language</li>
+
+                        <span class="head">Read the utterances (1–4). Mark the place (A–C) where you would hear them.</span><br>
+
+                        <ol>
+                            <li class="q2">Look at exercise 6 on page 21.</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="functional_language1" onclick="notR('functional_language1')"> restaurant</li><br>
+                                    <li><input type="checkbox" value="B" name="functional_language1" onclick="notR('functional_language1')"> classroom</li><br>
+                                    <li><input type="checkbox" value="C" name="functional_language1" onclick="notR('functional_language1')"> shopping mall</li><br>
+                            </ol>
+
+                            <li class="q2">How much is a sandwich and a bottle of water?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="functional_language2" onclick="notR('functional_language2')"> café</li><br>
+                                    <li><input type="checkbox" value="B" name="functional_language2" onclick="notR('functional_language2')"> club</li><br>
+                                    <li><input type="checkbox" value="C" name="functional_language2" onclick="notR('functional_language2')"> living room</li><br>
+                            </ol>
+
+                            <li class="q2">What time does the main film start?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="functional_language3" onclick="notR('functional_language3')"> video shop</li><br>
+                                    <li><input type="checkbox" value="B" name="functional_language3" onclick="notR('functional_language3')"> cinema</li><br>
+                                    <li><input type="checkbox" value="C" name="functional_language3" onclick="notR('functional_language3')"> library</li><br>
+                            </ol>
+
+                            <li class="q2">Fasten your seatbelts, put the backs of your seats in the upright position and fold  away your tables.</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="functional_language4" onclick="notR('functional_language4')"> police station</li><br>
+                                    <li><input type="checkbox" value="B" name="functional_language4" onclick="notR('functional_language4')">  train station</li><br>
+                                    <li><input type="checkbox" value="C" name="functional_language4" onclick="notR('functional_language4')"> aeroplane</li><br>
+                            </ol>
+                            
+                        </ol>
+
+                        <li class="parts">Part 5: Grammar</li>
+
+                        <span class="head">Mark the correct word (A–C) to complete each sentence (1–8).</span><br>
+
+                        <ol>
+                            <li class="q2">We are looking for a green car _____ .</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar1" onclick="notR('2grammar1')"> every day</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar1" onclick="notR('2grammar1')"> at the moment</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar1" onclick="notR('2grammar1')"> yesterday</li><br>
+                            </ol>
+
+                            <li class="q2">I don’t usually play tennis _____ .</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar2" onclick="notR('2grammar2')"> on Tuesdays</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar2" onclick="notR('2grammar2')">  last week</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar2" onclick="notR('2grammar2')"> tomorrow</li><br>
+                            </ol>
+
+                            <li class="q2">John isn’t going to buy a new house _____ .</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar3" onclick="notR('2grammar3')"> next year</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar3" onclick="notR('2grammar3')"> last month</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar3" onclick="notR('2grammar3')"> yesterday</li><br>
+                            </ol>
+
+                            <li class="q2">Where were you at 6 o’clock _____ ?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar4" onclick="notR('2grammar4')"> tomorrow</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar4" onclick="notR('2grammar4')">  in the summer</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar4" onclick="notR('2grammar4')"> this morning</li><br>
+                            </ol>
+
+                            <li class="q2">What time did you leave home _____ ?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar5" onclick="notR('2grammar5')"> tomorrow</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar5" onclick="notR('2grammar5')"> on Thursday</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar5" onclick="notR('2grammar5')"> at 6 o’clock</li><br>
+                            </ol>
+
+                            <li class="q2">There are a lot of clouds in the sky _____ .</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar6" onclick="notR('2grammar6')"> on Monday</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar6" onclick="notR('2grammar6')"> yesterday</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar6" onclick="notR('2grammar6')">  at the moment</li><br>
+                            </ol>
+
+                            <li class="q2">Do you like going to the beach _____ ?</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar7" onclick="notR('2grammar7')"> in summer</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar7" onclick="notR('2grammar7')"> tomorrow</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar7" onclick="notR('2grammar7')"> last month</li><br>
+                            </ol>
+
+                            <li class="q2">She never drives her car _____ .</li><br>
+
+                            <ol type="A" style="font-size: 18px">
+                                    <li><input type="checkbox" value="A" name="2grammar8" onclick="notR('2grammar8')"> today</li><br>
+                                    <li><input type="checkbox" value="B" name="2grammar8" onclick="notR('2grammar8')"> next day</li><br>
+                                    <li><input type="checkbox" value="C" name="2grammar8" onclick="notR('2grammar8')"> at weekends</li><br>
+                            </ol>
+                            
+                        </ol>
+
+                        <div style="text-align: center;"><button type="submit" class="btn btn-default" style="background-color: #4CAF50; color: white; margin-bottom: 10px; margin-top: 10px; margin-right: 15px;">Submit and go to the next stage</button></div>
+                    
+                    </form>
+                </ul>
+{% endblock %}

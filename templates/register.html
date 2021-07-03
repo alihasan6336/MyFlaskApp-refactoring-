@@ -1,0 +1,36 @@
+{% extends 'layouts/login_layout.html' %}
+
+{% block title %} Register • passion.com {% endblock %}
+
+{% block header %} Register: {% endblock %}
+
+{% block img_style %} style="position: fixed;" {% endblock %}
+
+{%block main_div_style%} style="padding-bottom: 5px;" {% endblock %}
+
+{% block labels %}
+<label style="font-size: 18px">Name<span style="color: red;">*</span></label>
+<input type="text" name="name" class="form-control" required autofocus>
+<label style="font-size: 18px">Phone<span style="color: red;">*</span></label>
+<input type="number" name="phone" class="form-control" required>
+<label style="font-size: 18px">Email</label>
+<input type="email" name="email" class="form-control">
+<label style="font-size: 18px">Password<span style="color: red;">*</span></label>
+<input type="password" name="password" class="form-control" id="passwordlabel" required>
+<label style="font-size: 18px">Confirm Password<span style="color: red;">*</span></label>
+<input type="password" name="confirm" class="form-control" id="confirmlabel" required>
+{% endblock %}
+
+{% block submit_button %} Submit {% endblock %}
+
+{% block register_or_login %}
+<a href="/login" style="font-size: 16px; font-family: sans-serif; margin-left: 307px; color: rgb(158,31,99); text-decoration: none;">
+    <b class="c">Login</b>
+</a>
+{% endblock %}
+
+
+
+
+
+

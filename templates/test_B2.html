@@ -1,0 +1,221 @@
+{% extends 'layouts/tests_layout.html' %}
+
+{% block title %}Test B2{% endblock %}
+
+{% block listening_file %} static/Recording_E.mp3 {% endblock %}
+
+{% block contant %}
+<h1 style="text-align: center">B2</h1>
+<ul>
+<form action="" method="POST" name="myForm">
+    <li class="parts">Part 1: Listening</li>                                  
+        <span class="head">Listen to a conversation in which a woman is checking out of a hotel. Mark the four statements (A–J) which are correct. [4 marks]</span>
+        <div style="text-align: center; margin: 15px">
+        <button style="border: none; background-color:initial;" onclick="playAudio()" id="playButton" type="button"><img src="{{  url_for('static', filename='/download1.png') }}" alt="" width="50px" height="50px"></button>
+        </div>
+
+        <ol type="A" style="font-size: 18px">
+        <li><input type="checkbox" value="A" name="listening" id='listening1' class="listening" onclick="l('#listening1')"> The receptionist asked the guest how she was going to pay her bill.</li><br>
+        <li><input type="checkbox" value="B" name="listening" id='listening2' class="listening" onclick="l('#listening2')"> The guest took the telephone from room 603.</li><br>
+        <li><input type="checkbox" value="C" name="listening" id='listening3' class="listening" onclick="l('#listening3')">  The guest asked about a charge for $120.</li><br>
+        <li><input type="checkbox" value="D" name="listening" id='listening4' class="listening" onclick="l('#listening4')">  The receptionist asked why she had used the telephone.</li><br>
+        <li><input type="checkbox" value="E" name="listening" id='listening5' class="listening" onclick="l('#listening5')"> The receptionist suggested that she should phone her husband.</li><br>
+        <li><input type="checkbox" value="F" name="listening" id='listening6' class="listening" onclick="l('#listening6')">  The guest told the receptionist he was crazy.</li><br>
+        <li><input type="checkbox" value="G" name="listening" id='listening7' class="listening" onclick="l('#listening7')">  The guest insisted on seeing the hotel manager at once.</li><br>
+        <li><input type="checkbox" value="H" name="listening" id='listening8' class="listening" onclick="l('#listening8')">  The receptionist explained that the hotel manager was having his lunch.</li><br>
+        <li><input type="checkbox" value="I" name="listening" id='listening9' class="listening" onclick="l('#listening9')">  The receptionist invited the guest to have lunch with the hotel manager.</li><br>
+        <li><input type="checkbox" value="J" name="listening" id='listening10' class="listening" onclick="l('#listening10')">  The guest agreed to meet the hotel manager at two thirty.</li><br>
+        </ol>
+
+
+        <li class="parts">Part 2: Reading</li>
+        <span class="head">Read the text. Four of the statements below opinions). Which are the four true statements?</span><br>
+        <div class="readingBox">
+        Rather than investing in expensive scientific
+        equipment to predict earthquakes, perhaps
+        scientists should spend more time watching
+        their pets. Many researchers now believe that
+        the behaviour of certain animals might help
+        them to predict natural disasters. For
+        example, Chinese scientists in the 1970s
+        thought that reports of farm animals running
+        around in circles, and of dogs barking all
+        night may indicate an impending natural
+        disaster. They decided to evacuate the city of
+        Haichin, which shortly afterwards was hit by
+        a huge earthquake. Thousands of lives were
+        probably saved as a result. Japanese scientists
+        have also discovered that catfish become
+        livelier several days before moderately strong
+        earthquakes. Many scientists now accept that
+        this can’t be pure coincidence; they believe
+        the explanation may be linked to slight
+        changes in the Earth’s magnetic field.
+        Although human beings can’t perceive such
+        changes, it is thought that the sensitive
+        nervous systems of some animals must be
+        affected by them. Now scientists must
+        discover exactly which animals are affected in
+        this way, so that they can save many more
+        lives in the future.
+        </div>
+
+        <ol type="A" style="font-size: 18px">
+        <li><input type="checkbox" value="A" name="reading" id='reading1' class="reading" onclick="r('#reading1')"> Scientists spend money on expensive scientific equipment to predict earthquakes.</li><br>
+        <li><input type="checkbox" value="B" name="reading" id='reading2' class="reading" onclick="r('#reading2')"> Animals can predict natural disasters.</li><br>
+        <li><input type="checkbox" value="C" name="reading" id='reading3' class="reading" onclick="r('#reading3')"> In the 1970s, Chinese scientists heard reports of animals behaving strangely near Haichin.</li><br>
+        <li><input type="checkbox" value="D" name="reading" id='reading4' class="reading" onclick="r('#reading4')"> The scientists knew this was a sign that an earthquake was coming.</li><br>
+        <li><input type="checkbox" value="E" name="reading" id='reading5' class="reading" onclick="r('#reading5')"> The city of Haichin was evacuated before the earthquake. </li><br>
+        <li><input type="checkbox" value="F" name="reading" id='reading6' class="reading" onclick="r('#reading6')"> Japanese scientists noticed an increase in activity of catfish before earthquakes.</li><br>
+        <li><input type="checkbox" value="G" name="reading" id='reading7' class="reading" onclick="r('#reading7')"> Some animals are more sensitive to magnetic changes than human beings are.</li><br>
+        <li><input type="checkbox" value="H" name="reading" id='reading8' class="reading" onclick="r('#reading8')"> All scientists believe this is not a pure coincidence.</li><br>
+        <li><input type="checkbox" value="I" name="reading" id='reading9' class="reading" onclick="r('#reading9')"> Scientists have discovered which animals are affected by magnetic changes.</li><br>
+        <li><input type="checkbox" value="J" name="reading" id='reading10' class="reading" onclick="r('#reading10')"> They will be able to save more lives in the future.</li><br>
+        </ol>
+
+
+        <li class="parts">Part 3: Vocabulary</li>
+        <span class="head">Choose the correct preposition (A–C) to complete each sentence (1–4).</span><br>
+
+        <ol>
+        <li class="q2">The car stopped because I had run _____ of petrol.</li><br>
+        <ol type="A" style="font-size: 18px">
+                <li><input type="checkbox" value="A" name="vocabulary1" onclick="notR('vocabulary1')"> out</li><br>
+                <li><input type="checkbox" value="B" name="vocabulary1" onclick="notR('vocabulary1')"> down</li><br>
+                <li><input type="checkbox" value="C" name="vocabulary1" onclick="notR('vocabulary1')"> over</li><br>
+        </ol>
+
+        <li class="q2">She apologised _____ being late.</li><br>
+
+        <ol type="A" style="font-size: 18px">
+                <li><input type="checkbox" value="A" name="vocabulary2" onclick="notR('vocabulary2')"> over</li><br>
+                <li><input type="checkbox" value="B" name="vocabulary2" onclick="notR('vocabulary2')"> for</li><br>
+                <li><input type="checkbox" value="C" name="vocabulary2" onclick="notR('vocabulary2')"> from</li><br>
+        </ol>
+
+        <li class="q2">She has brought _____ a family of five healthy children.</li><br>
+
+        <ol type="A" style="font-size: 18px">
+                <li><input type="checkbox" value="A" name="vocabulary3" onclick="notR('vocabulary3')"> about</li><br>
+                <li><input type="checkbox" value="B" name="vocabulary3" onclick="notR('vocabulary3')"> out</li><br>
+                <li><input type="checkbox" value="C" name="vocabulary3" onclick="notR('vocabulary3')"> up</li><br>
+        </ol>
+
+        <li class="q2">If you don’t understand, ask your teacher to go _____ it again with you.</li><br>
+
+        <ol type="A" style="font-size: 18px">
+                <li><input type="checkbox" value="A" name="vocabulary4" onclick="notR('vocabulary4')"> through</li><br>
+                <li><input type="checkbox" value="B" name="vocabulary4" onclick="notR('vocabulary4')"> into</li><br>
+                <li><input type="checkbox" value="C" name="vocabulary4" onclick="notR('vocabulary4')"> towards</li><br>
+        </ol>
+
+        </ol>
+
+                <li class="parts">Part 4: Functional language</li>
+
+                <span class="head">Choose the most suitable sympathetic response (A–C) to each utterance (1–4)</span><br>
+
+                <ol>
+                        <li class="q2">My son is having an operation in hospital today.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="functional_language1" onclick="notR('functional_language1')"> Calm down!</li><br>
+                                <li><input type="checkbox" value="B" name="functional_language1" onclick="notR('functional_language1')"> Oh dear, you must be really worried about him.</li><br>
+                                <li><input type="checkbox" value="C" name="functional_language1" onclick="notR('functional_language1')"> Oh, that’s too bad.</li><br>
+                        </ol>
+
+                        <li class="q2">That wasp is really annoying me!</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="functional_language2" onclick="notR('functional_language2')"> Just try to ignore it.</li><br>
+                                <li><input type="checkbox" value="B" name="functional_language2" onclick="notR('functional_language2')"> How awful for you!</li><br>
+                                <li><input type="checkbox" value="C" name="functional_language2" onclick="notR('functional_language2')"> Nevermind, it’s only a wasp!</li><br>
+                        </ol>
+
+                        <li class="q2">My girlfriend said she didn’t like my moustache!</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="functional_language3" onclick="notR('functional_language3')"> Don’t worry, she’ll get used to it.</li><br>
+                                <li><input type="checkbox" value="B" name="functional_language3" onclick="notR('functional_language3')"> How terrible for you!</li><br>
+                                <li><input type="checkbox" value="C" name="functional_language3" onclick="notR('functional_language3')"> I agree, you look terrible!</li><br>
+                        </ol>
+
+                        <li class="q2">I’ve been waiting for my bus for 15 minutes!</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="functional_language4" onclick="notR('functional_language4')"> Nevermind, I’m sure it will arrive soon.</li><br>
+                                <li><input type="checkbox" value="B" name="functional_language4" onclick="notR('functional_language4')"> Try not to worry about it.</li><br>
+                                <li><input type="checkbox" value="C" name="functional_language4" onclick="notR('functional_language4')"> Maybe it will never come.</li><br>
+                        </ol>
+                        
+                </ol>
+
+                <li class="parts">Part 5: Grammar</li>
+
+                <span class="head">Read these pairs of sentences (1–8) carefully. Do they have the same or different meanings? Mark the correct answer (A or B).</span><br>
+
+                <ol>
+                        <li class="q2">I’ll phone you the moment I get home.<br>I’ll phone you as soon as I get home.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar1" onclick="notR('grammar1')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar1" onclick="notR('grammar1')"> Different</li><br>
+                        </ol>
+
+                        <li class="q2">Parking is very difficult in Cambridge.<br>It is very difficult to park in Cambridge.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar2" onclick="notR('grammar2')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar2" onclick="notR('grammar2')"> Different</li><br>
+                        </ol>
+
+                        <li class="q2">The criminals had escaped when the police arrived.<br>The criminals escaped when the police arrived.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar3" onclick="notR('grammar3')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar3" onclick="notR('grammar3')"> Different</li><br>
+                        </ol>
+
+                        <li class="q2">More foreign cars are being sold than last year.<br>People are buying more foreign cars than last year.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar4" onclick="notR('grammar4')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar4" onclick="notR('grammar4')"> Different</li><br>
+                        </ol>
+
+                        <li class="q2">She accused me of lying.<br>She said I was lying.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar5" onclick="notR('grammar5')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar5" onclick="notR('grammar5')"> Different</li><br>
+                        </ol>
+
+                        <li class="q2">His nervousness prevents him from being a good speaker.<br>What prevents him from being a good speaker, is his nervousness.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar6" onclick="notR('grammar6')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar6" onclick="notR('grammar6')">  Different</li><br>
+                        </ol>
+
+                        <li class="q2">The people, who shouted at the minister, were arrested.<br>The people who shouted at the minister were arrested.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar7" onclick="notR('grammar7')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar7" onclick="notR('grammar7')"> Different</li><br>
+                        </ol>
+
+                        <li class="q2">I wish you were more helpful around the house.<br>I wish you’d be more helpful around the house.</li><br>
+
+                        <ol type="A" style="font-size: 18px">
+                                <li><input type="checkbox" value="A" name="grammar8" onclick="notR('grammar8')"> Same</li><br>
+                                <li><input type="checkbox" value="B" name="grammar8" onclick="notR('grammar8')"> Different</li><br>
+                        </ol>
+        
+                </ol>
+
+                <div style="text-align: center;"><button type="submit" class="btn btn-default" style="background-color: #4CAF50; color: white; margin-bottom: 10px; margin-top: 10px; margin-right: 15px;">Submit and go to the next stage</button></div>
+
+        </form>
+
+</ul>
+{% endblock %}

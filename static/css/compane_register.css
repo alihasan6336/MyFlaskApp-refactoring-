@@ -1,0 +1,86 @@
+body {
+    background-image: url(../back_ground5.jpg);
+    background-size: cover;
+    background-attachment:fixed;
+    font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: rgb(158,31,99);
+}
+
+label {
+    font-weight: bold;
+    color: rgb(158,31,99);
+}
+
+.container {
+    box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+    border-radius: 25px;
+    padding: 3em;
+    background-color: whitesmoke;
+    color: rgb(158,31,99);
+}
+
+.btn-block, .btn-block:hover, .btn-block:active, .btn-block:visited {
+    background-color: rgb(158,31,99) !important;
+    border-color: rgb(134, 28, 83);
+}
+
+.file-up {
+    padding: 1em;
+    border: 1px solid gray;
+}
+
+.alert-danger {
+    background-color: #eb4658;
+    border-color: #eb4658;
+    color: #fff;
+}
+
+.alert-success {
+    color: rgb(158,31,99);
+    background-color: #e6c3de;
+    border-color: #e6c3de;
+}
+
+.form-control:focus{border-color: rgb(158,31,99);  box-shadow: none; -webkit-box-shadow: 0px 0px 6px -1px rgba(158,31,99, 0.7);} 
+
+::selection {
+    background: rgba(158,31,99, .7);; 
+  }
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+    border-radius: 10px;
+    background-color: #CCCCCC;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    background-color: rgb(158,31,99);
+    background-image: -webkit-linear-gradient(90deg,
+                                            transparent,
+                                            rgba(0, 0, 0, 0.3) 50%,
+                                            transparent,
+                                            transparent)
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

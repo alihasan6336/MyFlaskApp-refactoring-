@@ -1,0 +1,292 @@
+{% extends 'layouts/tests_layout.html' %}
+
+{% block title %}Test A1{% endblock %}
+
+{% block listening_file %} static/Recording_B.mp3 {% endblock %}
+
+{% block contant %}
+<h1 style="text-align: center">A1</h1>
+
+                <ul>
+                        <form action="" method="POST"  name="myForm">
+                                <li class="parts">Part 1: Listening</li>
+
+                                <span class="head">Listen to an interview with a man called Bob Kessler. Choose the correct option (A–D) for each question (1– 4). [4 marks]</span>
+
+                                <div style="text-align: center; margin: 15px">
+                                       <button style="border: none; background-color:initial;" onclick="playAudio()" id="playButton" type="button"><img src="{{  url_for('static', filename='/download1.png') }}" alt="" width="50px" height="50px"></button>
+                                </div>
+
+                                <ol style="font-size: 20px">
+                                        <li><ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="listening1" onclick="notR('listening1')"> Bob Kessler has a wife and daughter.</li><br>
+                                                <li><input type="checkbox" value="B" name="listening1" onclick="notR('listening1')">  Bob Kessler has two sons.</li><br>
+                                                <li><input type="checkbox" value="C" name="listening1" onclick="notR('listening1')"> Bob Kessler is a bachelor.</li><br>
+                                                <li><input type="checkbox" value="D" name="listening1" onclick="notR('listening1')"> Bob Kessler was married before.</li><br>
+                                        </ol></li>
+
+                                        <li><ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="listening2" onclick="notR('listening2')"> Bob Kessler is English.</li><br>
+                                                <li><input type="checkbox" value="B" name="listening2" onclick="notR('listening2')">  Bob Kessler lives in West Hills California, USA.</li><br>
+                                                <li><input type="checkbox" value="C" name="listening2" onclick="notR('listening2')"> Bob Kessler’s wife isn’t American, she’s British.</li><br>
+                                                <li><input type="checkbox" value="D" name="listening2" onclick="notR('listening2')"> Bob Kessler is American but he lives in England.</li><br>
+                                        </ol></li>
+
+                                        <li><ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="listening3" onclick="notR('listening3')"> Bob Kessler writes two or three books a year.</li><br>
+                                                <li><input type="checkbox" value="B" name="listening3" onclick="notR('listening3')">  Bob Kessler writes travel books about England and other European countries.</li><br>
+                                                <li><input type="checkbox" value="C" name="listening3" onclick="notR('listening3')"> Bob Kessler’s job is selling books in Italy and France.</li><br>
+                                                <li><input type="checkbox" value="D" name="listening3" onclick="notR('listening3')"> Bob Kessler likes Italy and France more than the USA.</li><br>
+                                        </ol></li>
+
+                                        <li><ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="listening4" onclick="notR('listening4')"> Bob Kessler’s wife works at a school in England.</li><br>
+                                                <li><input type="checkbox" value="B" name="listening4" onclick="notR('listening4')">  Bob Kessler’s daughter has many English friends.</li><br>
+                                                <li><input type="checkbox" value="C" name="listening4" onclick="notR('listening4')"> Bob Kessler never drinks tea without  milk.</li><br>
+                                                <li><input type="checkbox" value="D" name="listening4" onclick="notR('listening4')"> Bob Kessler always drives his daughter to school.</li><br>
+                                        </ol></li>
+                                </ol>
+
+
+                                <li class="parts">Part 2: Reading</li>
+                                
+                                <span class="head">Read the text and choose the best answer (A–D) for each question (1–4).</span><br>
+
+                                <div class="readingBox">Tim Berners-Lee looks ordinary – he is about
+                                        45 years old and has brown hair. His life is
+                                        quite normal – he was born in England, but
+                                        his home is now in Massachusetts, USA. But,
+                                        in 1989, Tim had a very important idea. He
+                                        invented the World Wide Web.
+                                        Tim went to school in London. His parents
+                                        both worked with computers, so it isn’t
+                                        surprising that he loved computers from an
+                                        early age. When he was eighteen, he left
+                                        school and went to Oxford University, where
+                                        he studied Physics. At Oxford he became
+                                        more and more interested in computers, and
+                                        he made his first computer from an old
+                                        television. He graduated in 1976 and got a job
+                                        with a computer company in Dorset, England.
+                                        In 1989, he went to work in Switzerland,
+                                        where he first had the idea of an international
+                                        information network linked by computer …
+                                        and he decided to call it the World Wide Web.
+                                        In 1994, he went to live in the United States,
+                                        where he now works. In 1995, he wrote an
+                                        article in the New York Times where he said
+                                        ‘The Web is a universe of information: it is for
+                                        everyone.’ His idea of a web, where people
+                                        from all over the world can exchange
+                                        information, is now real.
+                                </div>
+
+                                <ol>
+                                        <li style="font-size: 20px; margin-top: 12px">Where was Tim Berners-Lee born?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                        <li><input type="checkbox" value="A" name="reading1" onclick="notR('reading1')"> in Massachusetts</li><br>
+                                        <li><input type="checkbox" value="B" name="reading1" onclick="notR('reading1')">  in Oxford</li><br>
+                                        <li><input type="checkbox" value="C" name="reading1" onclick="notR('reading1')"> in Dorset</li><br>
+                                        <li><input type="checkbox" value="D" name="reading1" onclick="notR('reading1')"> in England</li><br>
+                                        </ol>
+
+                                        <li class="q2">What did Tim study at Oxford University?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading2" onclick="notR('reading2')"> computers</li><br>
+                                                <li><input type="checkbox" value="B" name="reading2" onclick="notR('reading2')"> school</li><br>
+                                                <li><input type="checkbox" value="C" name="reading2" onclick="notR('reading2')"> the world wide web</li><br>
+                                                <li><input type="checkbox" value="D" name="reading2" onclick="notR('reading2')"> physics</li><br>
+                                        </ol>
+
+                                        <li class="q2">What did he make when he was at Oxford?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading3" onclick="notR('reading3')"> a television</li><br>
+                                                <li><input type="checkbox" value="B" name="reading3" onclick="notR('reading3')"> the first computer</li><br>
+                                                <li><input type="checkbox" value="C" name="reading3" onclick="notR('reading3')"> a computer company</li><br>
+                                                <li><input type="checkbox" value="D" name="reading3" onclick="notR('reading3')"> a computer</li><br>
+                                        </ol>
+
+                                        <li class="q2">When did he invent the World Wide Web?</li><br>
+                                        
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading4" onclick="notR('reading4')"> 45 years old</li><br>
+                                                <li><input type="checkbox" value="B" name="reading4" onclick="notR('reading4')"> in Switzerland</li><br>
+                                                <li><input type="checkbox" value="C" name="reading4" onclick="notR('reading4')"> in 1989</li><br>
+                                                <li><input type="checkbox" value="D" name="reading4" onclick="notR('reading4')"> in 1994</li><br>
+                                        </ol>
+
+                                </ol>
+
+                                <li class="parts">Part 3: Vocabulary</li>
+
+                                <span class="head">Choose the correct answer (A–D) for each question (1–4).</span><br>
+
+                                <ol>
+                                        <li class="q2">Which verb is the opposite of sell?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary1" onclick="notR('vocabulary1')"> cost</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary1" onclick="notR('vocabulary1')"> bid</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary1" onclick="notR('vocabulary1')"> bye</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary1" onclick="notR('vocabulary1')"> buy</li><br>
+                                        </ol>
+
+                                        <li class="q2">Which word means very good?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary2" onclick="notR('vocabulary2')"> expensive</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary2" onclick="notR('vocabulary2')"> brilliant</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary2" onclick="notR('vocabulary2')"> important</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary2" onclick="notR('vocabulary2')"> beautiful</li><br>
+                                        </ol>
+
+                                        <li class="q2">Which word is not about family?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary3" onclick="notR('vocabulary3')"> aunt</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary3" onclick="notR('vocabulary3')"> grandfather</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary3" onclick="notR('vocabulary3')"> wide</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary3" onclick="notR('vocabulary3')"> wife</li><br>
+                                        </ol>
+
+                                        <li class="q2">Which word is not a language?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="vocabulary4" onclick="notR('vocabulary4')"> Russian</li><br>
+                                                <li><input type="checkbox" value="B" name="vocabulary4" onclick="notR('vocabulary4')"> Italian</li><br>
+                                                <li><input type="checkbox" value="C" name="vocabulary4" onclick="notR('vocabulary4')"> Argentina</li><br>
+                                                <li><input type="checkbox" value="D" name="vocabulary4" onclick="notR('vocabulary4')"> Japanese</li><br>
+                                        </ol>
+
+                                </ol>
+
+                                <li class="parts">Part 4: Functional language</li>
+
+                                <span class="head">Choose the best answer (A–D) for each question (1–4). </span><br>
+
+                                <ol>
+                                        <li class="q2">Do you sell toothpaste?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language1" onclick="notR('functional_language1')">  No, we don’t. Try the pharmacy.</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language1" onclick="notR('functional_language1')">  No, we can’t. It’s too late.</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language1" onclick="notR('functional_language1')"> Did you go to the pharmacy?</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language1" onclick="notR('functional_language1')"> No, it isn’t.</li><br>
+                                        </ol>
+
+                                        <li class="q2">Excuse me, are you Mr Rogers?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language2" onclick="notR('functional_language2')"> I don’t know.</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language2" onclick="notR('functional_language2')"> No, he isn’t there.</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language2" onclick="notR('functional_language2')"> No, I’m not. I think he’s in the restaurant.</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language2" onclick="notR('functional_language2')"> No, he’s from Jordan.</li><br>
+                                        </ol>
+
+                                        <li class="q2">What’s the time?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language3" onclick="notR('functional_language3')"> It’s rather hot at the moment.</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language3" onclick="notR('functional_language3')"> I’ll tell you later.</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language3" onclick="notR('functional_language3')"> I’m sorry, I don’t know.</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language3" onclick="notR('functional_language3')"> It’s the 15th August.</li><br>
+                                        </ol>
+
+                                        <li class="q2">Would you like a drink?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language4" onclick="notR('functional_language4')"> Thanks. I’d like an apple juice.</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language4" onclick="notR('functional_language4')"> Excuse me, are you drinking?</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language4" onclick="notR('functional_language4')"> Tea or coffee?</li><br>
+                                                <li><input type="checkbox" value="D" name="functional_language4" onclick="notR('functional_language4')"> I don’t know. Can you ask someone else?</li><br>
+                                        </ol>
+                                        
+                                </ol>
+
+                                <li class="parts">Part 5: Grammar</li>
+
+                                <span class="head">Choose the correct word or phrase (A–D) to complete each sentence (1–8).</span><br>
+
+                                <ol>
+                                        <li class="q2"> _____ Peter come from Dublin?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar1" onclick="notR('grammar1')"> Do</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar1" onclick="notR('grammar1')"> Does</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar1" onclick="notR('grammar1')"> Is</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar1" onclick="notR('grammar1')"> Was</li><br>
+                                        </ol>
+
+                                        <li class="q2">Do you like _____ house over there?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar2" onclick="notR('grammar2')"> those</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar2" onclick="notR('grammar2')"> this</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar2" onclick="notR('grammar2')"> these</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar2" onclick="notR('grammar2')"> that</li><br>
+                                        </ol>
+
+                                                <li class="q2">Where did you _____ when you were a child?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar3" onclick="notR('grammar3')"> live</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar3" onclick="notR('grammar3')"> lived</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar3" onclick="notR('grammar3')"> lives</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar3" onclick="notR('grammar3')"> living</li><br>
+                                        </ol>
+
+                                        <li class="q2"> _____ it raining in Amsterdam?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar4" onclick="notR('grammar4')"> Do</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar4" onclick="notR('grammar4')"> Does</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar4" onclick="notR('grammar4')"> Is</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar4" onclick="notR('grammar4')"> Are</li><br>
+                                        </ol>
+
+                                        <li class="q2">Are you _____ José tomorrow?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar5" onclick="notR('grammar5')"> see</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar5" onclick="notR('grammar5')"> will see</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar5" onclick="notR('grammar5')"> seen</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar5" onclick="notR('grammar5')"> going to see</li><br>
+                                        </ol>
+
+                                        <li class="q2">You _____ clean your car.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar6" onclick="notR('grammar6')"> mustn’t to</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar6" onclick="notR('grammar6')"> don’t have to</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar6" onclick="notR('grammar6')"> don’t want</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar6" onclick="notR('grammar6')"> can’t have to</li><br>
+                                        </ol>
+
+                                        <li class="q2">I went home _____ my new baby</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar7" onclick="notR('grammar7')"> to see</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar7" onclick="notR('grammar7')"> for to see</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar7" onclick="notR('grammar7')"> seeing</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar7" onclick="notR('grammar7')"> see</li><br>
+                                        </ol>
+
+                                        <li class="q2">This is  _____ picture of my friend.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar8" onclick="notR('grammar8')"> some</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar8" onclick="notR('grammar8')"> any</li><br>
+                                                <li><input type="checkbox" value="C" name="grammar8" onclick="notR('grammar8')"> a</li><br>
+                                                <li><input type="checkbox" value="D" name="grammar8" onclick="notR('grammar8')"> an</li><br>
+                                        </ol>
+                                        
+                                </ol>
+
+                                <div style="text-align: center;"><button type="submit" class="btn btn-default" style="background-color: #4CAF50; color: white; margin-bottom: 10px; margin-top: 10px; margin-right: 15px;">Submit and go to the next stage</button></div>
+
+                    </form>
+                </ul>
+{% endblock %}

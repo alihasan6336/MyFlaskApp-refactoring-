@@ -1,0 +1,235 @@
+{% extends 'layouts/tests_layout.html' %}
+
+{% block title %}Test B1{% endblock %}
+
+{% block listening_file %} static/Recording_D.mp3 {% endblock %}
+
+{% block contant %}
+<h1 style="text-align: center">B1</h1>
+
+                <ul>
+                        <form action="" method="POST"  name="myForm">
+                                <li class="parts">Part 1: Listening</li>
+                                                
+                                <span class="head">Listen to a woman talking about her shop. Mark the four statements which are correct. [4 marks]</span>
+
+                                <div style="text-align: center; margin: 15px">
+                                        <button style="border: none; background-color:initial;" onclick="playAudio()" id="playButton" type="button"><img src="{{  url_for('static', filename='/download1.png') }}" alt="" width="50px" height="50px"></button>
+                                </div>
+
+                                <ol type="A" style="font-size: 18px">
+                                        <li><input type="checkbox" value="A" name="listening" id='listening1' class="listening" onclick="l('#listening1')"> Denise has owned the shop for two years.</li><br>
+                                        <li><input type="checkbox" value="B" name="listening" id='listening2' class="listening" onclick="l('#listening2')">  She lives next door to the shop.</li><br>
+                                        <li><input type="checkbox" value="C" name="listening" id='listening3' class="listening" onclick="l('#listening3')">  Most of the things she sells are handmade.</li><br>
+                                        <li><input type="checkbox" value="D" name="listening" id='listening4' class="listening" onclick="l('#listening4')">  She sells some ceramics imported from Greece and Portugal.</li><br>
+                                        <li><input type="checkbox" value="E" name="listening" id='listening5' class="listening" onclick="l('#listening5')"> The interviewer likes the Japanese dresses in the shop.</li><br>
+                                        <li><input type="checkbox" value="F" name="listening" id='listening6' class="listening" onclick="l('#listening6')">  The shop also sells kitchen equipment like washing machines.</li><br>
+                                        <li><input type="checkbox" value="G" name="listening" id='listening7' class="listening" onclick="l('#listening7')">  A lot of the jewellery is made by local artists.</li><br>
+                                        <li><input type="checkbox" value="H" name="listening" id='listening8' class="listening" onclick="l('#listening8')">  Denise would like to move somewhere else.</li><br>
+                                        <li><input type="checkbox" value="I" name="listening" id='listening9' class="listening" onclick="l('#listening9')">  Unfortunately, it’s noisy because it is on a busy high street.</li><br>
+                                        <li><input type="checkbox" value="J" name="listening" id='listening10' class="listening" onclick="l('#listening10')">  Denise would like to have richer customers, rather than the students who come into the shop.</li><br>
+                                </ol>
+
+                                <li class="parts">Part 2: Reading</li>
+                                
+                                <span class="head">Read this text quickly and match the correct word (A–C) with each definition in questions (1–4).</span><br>
+                                
+
+                                <div class="readingBox">The majority of Inuit people from Alaska are
+                                        nomads, moving from one place to another,
+                                        hunting and fishing to survive. They don’t
+                                        tend to live in houses, preferring tents or
+                                        houses built from ice, called ‘igloos’. It is quite
+                                        common for a man to have several wives.
+                                        In some parts of Kentucky and Virginia, USA,
+                                        it is quite normal for girls of twelve or
+                                        thirteen to get married and start a family.
+                                        Often their husbands are only sixteen or
+                                        seventeen, so young couples tend to live with
+                                        their parents until they finish their education.
+                                        Many schools in these areas have crèches to
+                                        look after their pupils’ babies while they are
+                                        studying.
+                                </div>
+
+                                <ol>
+                                        <li class="q2">People who have no permanent home, but move from place to place according to the time of year.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading1" onclick="notR('reading1')"> nomads</li><br>
+                                                <li><input type="checkbox" value="B" name="reading1" onclick="notR('reading1')"> Inuit</li><br>
+                                                <li><input type="checkbox" value="C" name="reading1" onclick="notR('reading1')"> Alaskans</li><br>
+                                        </ol>
+
+                                        <li class="q2">To usually do something</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading2" onclick="notR('reading2')"> prefer</li><br>
+                                                <li><input type="checkbox" value="B" name="reading2" onclick="notR('reading2')"> tend</li><br>
+                                                <li><input type="checkbox" value="C" name="reading2" onclick="notR('reading2')"> tent</li><br>
+                                        </ol>
+
+                                        <li class="q2">An imprecise number, more than a few, but not a lot.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading3" onclick="notR('reading3')"> normal</li><br>
+                                                <li><input type="checkbox" value="B" name="reading3" onclick="notR('reading3')"> couple</li><br>
+                                                <li><input type="checkbox" value="C" name="reading3" onclick="notR('reading3')"> several</li><br>
+                                        </ol>
+
+                                        <li class="q2">Not more than a particular amount, number etc.</li><br>
+                                        
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="reading4" onclick="notR('reading4')"> quite</li><br>
+                                                <li><input type="checkbox" value="B" name="reading4" onclick="notR('reading4')"> only</li><br>
+                                                <li><input type="checkbox" value="C" name="reading4" onclick="notR('reading4')"> often</li><br>
+                                        </ol>
+
+                                </ol>
+
+                                <li class="parts">Part 3: Phonetics</li>
+
+                                <span class="head">Mark the word (A–C) which has the same vowel sound as the word in CAPITAL LETTERS in each sentence (1–4).</span><br>
+
+                                <ol>
+                                        <li class="q2">I CAN’T read your handwriting.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="phonetics1" onclick="notR('phonetics1')"> sent</li><br>
+                                                <li><input type="checkbox" value="B" name="phonetics1" onclick="notR('phonetics1')"> want</li><br>
+                                                <li><input type="checkbox" value="C" name="phonetics1" onclick="notR('phonetics1')"> aunt</li><br>
+                                        </ol>
+
+                                        <li class="q2">She OUGHT to stay at home and study.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="phonetics2" onclick="notR('phonetics2')"> out</li><br>
+                                                <li><input type="checkbox" value="B" name="phonetics2" onclick="notR('phonetics2')"> sort</li><br>
+                                                <li><input type="checkbox" value="C" name="phonetics2" onclick="notR('phonetics2')"> tough</li><br>
+                                        </ol>
+
+                                        <li class="q2">I’m studying LAW at university.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="phonetics3" onclick="notR('phonetics3')"> floor</li><br>
+                                                <li><input type="checkbox" value="B" name="phonetics3" onclick="notR('phonetics3')"> know</li><br>
+                                                <li><input type="checkbox" value="C" name="phonetics3" onclick="notR('phonetics3')"> flour</li><br>
+                                        </ol>
+
+                                        <li class="q2">Have you READ Tolstoy’s War and Peace?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="phonetics4" onclick="notR('phonetics4')"> seed</li><br>
+                                                <li><input type="checkbox" value="B" name="phonetics4" onclick="notR('phonetics4')"> said</li><br>
+                                                <li><input type="checkbox" value="C" name="phonetics4" onclick="notR('phonetics4')"> sighed</li><br>
+                                        </ol>
+
+                                </ol>
+
+                                <li class="parts">Part 4: Functional language</li>
+
+                                <span class="head">Choose the correct answer (A–C) for each question (1–4).</span><br>
+
+                                <ol>
+                                        <li class="q2">Which is the normal way to write an address on an envelope?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language1" onclick="notR('functional_language1')"> London Road 28, HUDDERSFIELD, HD1 6DD, Miss Longtree Julia</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language1" onclick="notR('functional_language1')"> HUDDERSFIELD, Miss Julia Longtree, 28, Road London, HD1 6DD</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language1" onclick="notR('functional_language1')"> Miss Julia Longtree, 28 London Road, HUDDERSFIELD, HD1 6DD</li><br>
+                                        </ol>
+
+                                        <li class="q2">What should Peter Thomas say when he answers the telephone?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language2" onclick="notR('functional_language2')"> I am Peter Thomas.</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language2" onclick="notR('functional_language2')"> Hello. Who are you?</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language2" onclick="notR('functional_language2')"> Peter Thomas speaking.</li><br>
+                                        </ol>
+
+                                        <li class="q2">How would you recommend that someone should visit the Grand Canyon?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language3" onclick="notR('functional_language3')"> Why won’t you go to the Grand Canyon?</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language3" onclick="notR('functional_language3')"> You really should go to the Grand Canyon.</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language3" onclick="notR('functional_language3')"> You could go to the Grand Canyon if you’ve nothing better to do.</li><br>
+                                        </ol>
+
+                                        <li class="q2">You want to borrow a dictionary from a friend. What do you say?</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="functional_language4" onclick="notR('functional_language4')"> Can I borrow your dictionary, please?</li><br>
+                                                <li><input type="checkbox" value="B" name="functional_language4" onclick="notR('functional_language4')"> Would you be so kind as to lend me your dictionary, please?</li><br>
+                                                <li><input type="checkbox" value="C" name="functional_language4" onclick="notR('functional_language4')"> Give me your dictionary.</li><br>
+                                        </ol>
+                                        
+                                </ol>
+
+                                <li class="parts">Part 5: Grammar</li>
+
+                                <span class="head">Read these pairs of sentences (1–8) carefully. Do they have the same or different meanings?<br>Mark the correct answer (A or B).</span><br>
+
+                                <ol>
+                                        <li class="q2">I haven’t seen her for four days.<br>I haven’t seen her since four days ago.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar1" onclick="notR('grammar1')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar1" onclick="notR('grammar1')"> Different</li><br>
+                                        </ol>
+
+                                        <li class="q2">Don’t let me forget my umbrella.<br>Please remind me to forget my umbrella.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar2" onclick="notR('grammar2')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar2" onclick="notR('grammar2')"> Different</li><br>
+                                        </ol>
+
+                                        <li class="q2">Jill’s shorter than her brother.<br>Jill’s brother is not as short as Jill.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar3" onclick="notR('grammar3')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar3" onclick="notR('grammar3')"> Different</li><br>
+                                        </ol>
+
+                                        <li class="q2">I remember opening the door.<br>I remembered to open the door.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar4" onclick="notR('grammar4')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar4" onclick="notR('grammar4')"> Different</li><br>
+                                        </ol>
+
+                                        <li class="q2">It was raining when I arrived.<br>When I arrived, it started to rain.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar5" onclick="notR('grammar5')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar5" onclick="notR('grammar5')"> Different</li><br>
+                                        </ol>
+
+                                        <li class="q2">She taught here for 35 years.<br>She’s taught here for 35 years.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar6" onclick="notR('grammar6')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar6" onclick="notR('grammar6')"> Different</li><br>
+                                        </ol>
+
+                                        <li class="q2">I won’t come to see you if the weather’s bad.<br>I’ll come to see you if the weather’s good.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar7" onclick="notR('grammar7')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar7" onclick="notR('grammar7')"> Different</li><br>
+                                        </ol>
+
+                                        <li class="q2">They weren’t allowed to enter the military base.<br>They didn’t have permission to enter the military base.</li><br>
+
+                                        <ol type="A" style="font-size: 18px">
+                                                <li><input type="checkbox" value="A" name="grammar8" onclick="notR('grammar8')"> Same</li><br>
+                                                <li><input type="checkbox" value="B" name="grammar8" onclick="notR('grammar8')"> Different</li><br>
+                                        </ol>
+                                        
+                                </ol>
+
+                                <div style="text-align: center;"><button type="submit" class="btn btn-default" style="background-color: #4CAF50; color: white; margin-bottom: 10px; margin-top: 10px; margin-right: 15px;">Submit and go to the next stage</button></div>
+
+                        </form>
+                </ul>
+{% endblock %}

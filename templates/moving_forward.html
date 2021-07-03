@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>Go to the next stage</title>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.lynda.com/static/css/3p.min-1dfaabdd.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.lynda.com/static/signin/css/signin.min-74b33971.css">
+        <link rel="stylesheet" type="text/css" href="../static/css/hover.css">
+        <link rel="icon" href="../static/passion-icon_p.png">
+
+    </head>
+    <body style="background-color: rgb(172, 5, 94); background-image: url(../static/back_ground5.jpg); background-size: cover; background-attachment:fixed;">
+            <div class="row" style="margin: 0px;">
+                <div class="panel col-xs-12" style="box-shadow: 0px 0px 15px -3px rgba(0,0,0,0.75); ">
+                    <form action="" method="POST" style="text-align: center;">
+                        <div style="font-size: 35px; font-family: sans-serif; margin-bottom: 10px; margin-top: 0px;" >{% if start %} {{start}}: {% else %} Continue: {% endif %}</div>
+                        
+                        {% if grades %}
+                        <p style="font-size: 20px;">
+                            Your results in {{pastTestName}}: <b>{{grades}}/24</b>
+                        </p> 
+                        {% endif %}
+                        
+                        <button class="btn btn-block btn-lg btn-primary hvr-wobble-horizontal" style="margin-top: 5px; background-color: rgb(172, 5, 94); border-color: rgb(172, 5, 94); margin-bottom: 10px;"><span>{{text}}</span></button>
+                    </form>
+                </div>
+            </div>
+    </body>
+</html>

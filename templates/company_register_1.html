@@ -1,0 +1,200 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Integration Request</title>
+    <link href="https://cowpay.me/resources/assets/front/css/bootstrap.css" rel="stylesheet">
+    <link href="https://cowpay.me/resources/assets/front/css/master/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../static/css/compane_register.css">
+</head>
+<body>
+    <!-- <div class="container-fluid">
+    <div class="container-fluid header add-bg-head">
+        <div class="container">
+            <div class="col-md-2 col-sm-2 col-xs-6" data-aos="fade-right">
+                <a href="https://cowpay.me" class="top-logo"><img
+                            src="https://cowpay.me/resources/assets/front/images/LOGO-w.png"></a>
+            </div>
+            <div class="col-lg-7 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-10 hidden-xs">
+                <ul>
+                    <li data-aos="fade-down"><a href="#">What we do</a></li>
+                    <li data-aos="fade-down" data-aos-delay="100"><a
+                                href="https://cowpay.me#why-cowpay">Why
+                            us?</a></li>
+
+                                            <li data-aos="fade-down" data-aos-delay="200"><a href="https://cowpay.me/getting-started">Getting
+                                started</a></li>
+                    
+                    <li data-aos="fade-down" data-aos-delay="300"><a href="https://cowpay.me/docs/">Developers</a>
+                    </li>
+                    <li data-aos="fade-down" data-aos-delay="400"><a href="https://cowpay.me/login" class="sing-in-btn">Sign
+                            in</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <button class="js-menu menu visible-xs" type="button">
+            <span class="bar"></span>
+        </button>
+        <a href="/login" class="sing-in-btn visible-xs">Sign in</a>
+        <div class="menu-main-mob visible-xs">
+            <ul>
+                <li><a class="swipe-effect" href="#">What we do</a></li>
+                <li><a class="swipe-effect"
+                       href="https://cowpay.me#why-cowpay">Why us?</a>
+                </li>
+                <li><a class="swipe-effect" href="https://cowpay.me/getting-started">Getting started</a></li>
+                <li><a class="swipe-effect" href="https://cowpay.me/docs/">Developers</a></li>
+            </ul>
+        </div>
+    </div>
+
+    
+</div> -->  
+        <div>
+            <div class="container">
+                <form method="post">
+                    <h1>Your Info</h1>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Business name <span style="color: red;">*</span></label>
+                        <input id="name" name="name" type="text" required>
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>E-Mail<span class="text-danger">*</span></label>
+                        <div class="clearfix"></div>
+                        <input id="email" value=""
+                               name="email" type="email"
+                               required data-bv-trigger="keyup change"
+                               data-bv-notempty-message="generic::global.required">
+                                            </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Phone<span class="text-danger">*</span></label>
+                        <div class="clearfix"></div>
+                        <input id="phone" value=""
+                               name="phone" type="text"
+                               required data-bv-trigger="keyup change"
+                               data-bv-notempty-message="generic::global.required">
+                                            </div>
+
+                    
+
+                    <div class="col-xs-12 input-main">
+                        <label>Logo<span class="text-danger">*</span></label>
+                        <div class="clearfix"></div>
+                        <input id="logo" name="logo" type="file">
+                                            </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Website</label>
+                        <div class="clearfix"></div>
+                        <input id="website"
+                               name="website" type="url">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Facebook Page</label>
+                        <div class="clearfix"></div>
+                        <input id="facebook"
+                               name="facebook" type="url">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Twitter Account</label>
+                        <div class="clearfix"></div>
+                        <input id="twitter"
+                               name="twitter" type="url">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Country<span class="text-danger">*</span> </label>
+                        <div class="clearfix"></div>
+                        <select name="country_id">
+                            <option selected disabled="">-- select country --</option>
+                                                            <option value="66">Egypt</option>
+                                                    </select>
+                                            </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>City<span class="text-danger">*</span> </label>
+                        <div class="clearfix"></div>
+                        <select name="city_id">
+                            <option selected disabled="">-- select city --</option>
+                                                            <option value="1">Cairo</option>
+                                                    </select>
+                                            </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Business Address<span class="text-danger">*</span></label>
+                        <div class="clearfix"></div>
+                        <textarea id="address" name="address" required
+                                  data-bv-notempty-message="generic::global.required">       </textarea>
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>About<span class="text-danger">*</span></label>
+                        <div class="clearfix"></div>
+                        <textarea id="about" name="about" required
+                                  data-bv-notempty-message="generic::global.required"></textarea>
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Commercial Registration Number</label>
+                        <div class="clearfix"></div>
+                        <input id="commercial_registry" name="commercial_registry"
+                               type="text">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Commercial Registry File</label>
+                        <div class="clearfix"></div>
+                        <input id="commercial_registry_file" name="commercial_registry_file"
+                               type="file">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Personal ID Number</label>
+                        <div class="clearfix"></div>
+                        <input id="personal_id" name="personal_id" type="text">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Personal ID Image</label>
+                        <div class="clearfix"></div>
+                        <input id="personal_id_file" name="personal_id_file" type="file">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Tax ID</label>
+                        <div class="clearfix"></div>
+                        <input id="tax_id" name="tax_id" type="text">
+                    </div>
+
+                    <div class="col-xs-12 input-main">
+                        <label>Tax ID File</label>
+                        <div class="clearfix"></div>
+                        <input id="tax_id_file" name="tax_id_file" type="file">
+                    </div>
+
+                    <div>
+                        <div class="radio-main">
+                            <input type="checkbox" id="option-1" name="payments_notification" value="0">
+                            <label for="option-1">Receive Payments Notifications</label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="radio-main">
+                            <input type="checkbox" name="orders_notification" id="option-2" value="0">
+                            <label for="option-2">Receive Orders Notifications</label>
+                        </div>
+                    </div>
+                    <button type="submit">Send</button>
+                </form>
+
+            </div>
+</body>
+</html>

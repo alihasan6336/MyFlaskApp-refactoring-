@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <title>{% block title %} {% endblock %}</title>
+
+        {% include 'includes/_login_style.html' %}
+    </head>
+
+    <body>
+        <div>
+            <img src="{{ url_for('static', filename='passion-pngc-01.png') }}" alt="passion logo" width="200px" height="65px" {% block img_style %} {% endblock %}>
+        </div>
+
+        <div class="row" style="margin: 0px;">
+            <div class="panel col-xs-12" {%block main_div_style%}{% endblock %}>        
+                <form action="" method="POST">
+                    <div class="header">{% block header %} {% endblock %}</div>
+
+                    {% if error %}
+                        <div class="alert alert-danger"><span>{{error}}</span></div>
+                    {% endif %}
+
+                    {% block labels %} {% endblock %}
+                    <input type="checkbox" onclick="myFunction()"><span> Show Password</span> 
+                    <button type="submit" class="btn btn-block btn-lg btn-primary hvr-wobble-horizontal" style="margin-top: 5px; background-color: rgb(172, 5, 94); border-color: rgb(172, 5, 94); margin-bottom: 10px;">
+                        {% block submit_button %} {% endblock %}
+                    </button>
+                    
+                    {% block register_or_login %} {% endblock %}
+                    {% block contact_us %} {% endblock %}
+                </form>
+            </div>
+        </div>
+    </body>
+</html>
